@@ -50,7 +50,8 @@ a) Iz tabele CreditCard baze AdventureWorks2017 importovati podatke u tabelu kre
 */
 
 /*
-b) Iz tabela Person, Password, PersonCreditCard i PersonPhone baze AdventureWorks2017 koje se nalaze u šemama Sales i Person importovati podatke u tabelu osoba na sljedeći način:
+b) Iz tabela Person, Password, PersonCreditCard i PersonPhone baze AdventureWorks2017 koje se nalaze u šemama Sales i Person 
+importovati podatke u tabelu osoba na sljedeći način:
 	- BussinesEntityID -> osobaID
 	- CreditCardID -> kreditnaID
 	- PasswordHash -> mail_lozinka
@@ -60,7 +61,8 @@ b) Iz tabela Person, Password, PersonCreditCard i PersonPhone baze AdventureWork
 
 
 /*
-c) Iz tabela Customer i SalesOrderHeader baze AdventureWorks2017 koje se nalaze u šemi Sales importovati podatke u tabelu narudzba na sljedeći način:
+c) Iz tabela Customer i SalesOrderHeader baze AdventureWorks2017 koje se nalaze u šemi Sales importovati podatke u tabelu 
+narudzba na sljedeći način:
 	- SalesOrderID -> narudzbaID
 	- CreditCardID -> kreditnaID
 	- PurchaseOrderNumber -> br_narudzbe
@@ -97,8 +99,9 @@ c) Iz tabela Customer i SalesOrderHeader baze AdventureWorks2017 koje se nalaze 
 -----------------------------------------------------------------------------------------------------------------------------
 /*
 4. Koristeći tabelu osoba kreirati proceduru proc_kred_mail u kojoj će biti sve kolone iz tabele. 
-Proceduru kreirati tako da je prilikom izvršavanja moguće unijeti bilo koji broj parametara (možemo ostaviti bilo koji parametar bez unijete vrijednosti) 
-uz uslov da se prenesu samo oni zapisi u kojima je unijet predbroj u koloni br_tel. Npr. (123) 456 789 je zapis u kojem je unijet predbroj. 
+Proceduru kreirati tako da je prilikom izvršavanja moguće unijeti bilo koji broj parametara (možemo ostaviti bilo koji 
+parametar bez unijete vrijednosti) uz uslov da se prenesu samo oni zapisi u kojima je unijet predbroj u koloni br_tel. 
+Npr. (123) 456 789 je zapis u kojem je unijet predbroj. 
 Nakon kreiranja pokrenuti proceduru za sljedeću vrijednost:
 br_tel = 1 (11) 500 555-0132
 */
@@ -115,8 +118,10 @@ b) U tabeli kreditna1 dodati novu kolonu dtm_izmjene čija je default vrijednost
 -----------------------------------------------------------------------------------------------------------------------------
 /*
 6.
-a) U zapisima tabele kreditna1 kod kojih broj kreditne kartice počinje ciframa 1 ili 3 vrijednost broja kreditne kartice zamijeniti slučajno generisanim nizom znakova.
-b) Dati ifnormaciju (prebrojati) broj zapisa u tabeli kreditna1 kod kojih se datum evidencije nalazi u intevalu do najviše 6 godina u odnosu na datum izmjene.
+a) U zapisima tabele kreditna1 kod kojih broj kreditne kartice počinje ciframa 1 ili 3 vrijednost broja kreditne kartice zamijeniti 
+slučajno generisanim nizom znakova.
+b) Dati ifnormaciju (prebrojati) broj zapisa u tabeli kreditna1 kod kojih se datum evidencije nalazi u intevalu do najviše 6 godina 
+u odnosu na datum izmjene.
 c) Napisati naredbu za brisanje tabele kreditna1
 */
 
@@ -135,8 +140,8 @@ b) U tabeli narudzba izvršiti izmjenu svih null vrijednosti u koloni prodavnica
 -----------------------------------------------------------------------------------------------------------------------------
 /*
 8.
-Kreirati proceduru kojom će se u tabeli narudzba izvršiti izmjena svih vrijednosti u koloni br_narudzbe u kojima se ne nalazi slučajno generirani niz 
-znakova tako da se iz podatka izvrši uklanjanje prva dva znaka. 
+Kreirati proceduru kojom će se u tabeli narudzba izvršiti izmjena svih vrijednosti u koloni br_narudzbe u kojima se ne nalazi 
+slučajno generirani niz znakova tako da se iz podatka izvrši uklanjanje prva dva znaka. 
 */
 
 --8 bodova
@@ -149,7 +154,8 @@ znakova tako da se iz podatka izvrši uklanjanje prva dva znaka.
 9.
 a) Iz tabele narudzba kreirati pogled koji će imati sljedeću strukturu:
 	- duz_br_nar 
-	- prebrojano - prebrojati broj zapisa prema dužini podatka u koloni br_narudzbe (npr. 1000 zapisa kod kojih je dužina podatka u koloni br_narudzbe 10)
+	- prebrojano - prebrojati broj zapisa prema dužini podatka u koloni br_narudzbe 
+	  (npr. 1000 zapisa kod kojih je dužina podatka u koloni br_narudzbe 10)
 Uslov je da se ne prebrojavaju zapisi u kojima je smješten slučajno generirani niz znakova. 
 Provjeriti sadržaj pogleda.
 b) Prikazati minimalnu i maksimalnu vrijednost kolone prebrojano

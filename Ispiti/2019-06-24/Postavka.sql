@@ -116,13 +116,15 @@ Provjeriti sadržaj pogleda, pri čemu se treba izvršiti sortiranje po ukupnom 
 
 ----------------------------------------------------------------5. 
 /*
-Koristeći vlastitu bazu kreirati proceduru nad tabelom Narudzbe kojom će se dužina podatka u koloni SifraUposlenika smanjiti sa 20 na 4 slučajno generisana karaktera. Pokrenuti proceduru. */
+Koristeći vlastitu bazu kreirati proceduru nad tabelom Narudzbe kojom će se dužina podatka u koloni SifraUposlenika 
+smanjiti sa 20 na 4 slučajno generisana karaktera. Pokrenuti proceduru. */
 
 
 
 ----------------------------------------------------------------6.
 /*
-Koristeći vlastitu bazu podataka kreirati pogled koji će imati sljedeću strukturu: NazivProizvoda, Ukupno - ukupnu sumu prodaje proizvoda uz uzimanje u obzir i popusta. 
+Koristeći vlastitu bazu podataka kreirati pogled koji će imati sljedeću strukturu: NazivProizvoda, 
+Ukupno - ukupnu sumu prodaje proizvoda uz uzimanje u obzir i popusta. 
 Suma mora biti zakružena na dvije decimale. U pogled uvrstiti one proizvode koji su naručeni, uz uslov da je suma veća od 10000. 
 Provjeriti sadržaj pogleda pri čemu ispis treba sortirati u opadajućem redoslijedu po vrijednosti sume.
 */
@@ -132,16 +134,16 @@ Provjeriti sadržaj pogleda pri čemu ispis treba sortirati u opadajućem redosl
 ----------------------------------------------------------------7.
 --7a
 /*
-Koristeći vlastitu bazu podataka kreirati pogled koji će imati sljedeću strukturu: Kupac, NazivProizvoda, suma po cijeni proizvoda pri čemu će se u 
-pogled smjestiti samo oni zapisi kod kojih je cijena proizvoda veća od srednje vrijednosti cijene proizvoda. 
-Provjeriti sadržaj pogleda pri čemu izlaz treba sortirati u rastućem redoslijedu izračunatoj sumi.
+Koristeći vlastitu bazu podataka kreirati pogled koji će imati sljedeću strukturu: Kupac, NazivProizvoda, 
+suma po cijeni proizvoda pri čemu će se u pogled smjestiti samo oni zapisi kod kojih je cijena proizvoda veća od srednje vrijednosti 
+cijene proizvoda. Provjeriti sadržaj pogleda pri čemu izlaz treba sortirati u rastućem redoslijedu izračunatoj sumi.
 */
 
 /*
-Koristeći vlastitu bazu podataka kreirati proceduru kojom će se, koristeći prethodno kreirani pogled, definirati parametri: kupac, NazivProizvoda i SumaPoCijeni. 
-Proceduru kreirati tako da je prilikom izvršavanja moguće unijeti bilo koji broj parametara (možemo ostaviti bilo koji parametar bez unijete vrijednosti), 
-uz uslov da vrijednost sume bude veća od srednje vrijednosti suma koje su smještene u pogled. Sortirati po sumi cijene.
-Procedura se treba izvršiti ako se unese vrijednost za bilo koji parametar.
+Koristeći vlastitu bazu podataka kreirati proceduru kojom će se, koristeći prethodno kreirani pogled, definirati parametri: kupac,
+NazivProizvoda i SumaPoCijeni. Proceduru kreirati tako da je prilikom izvršavanja moguće unijeti bilo koji broj parametara
+(možemo ostaviti bilo koji parametar bez unijete vrijednosti), uz uslov da vrijednost sume bude veća od srednje vrijednosti suma koje
+su smještene u pogled. Sortirati po sumi cijene. Procedura se treba izvršiti ako se unese vrijednost za bilo koji parametar.
 Nakon kreiranja pokrenuti proceduru za sljedeće vrijednosti parametara:
 1. SumaPoCijeni = 123
 2. Kupac = Hanari Carnes
