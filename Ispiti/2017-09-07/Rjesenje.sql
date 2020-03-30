@@ -304,7 +304,7 @@ END
 exec proc_zad_5 'Lander',6,100
 /*10. Kreirati full i diferencijalni backup baze podataka na lokaciju servera D:\BP2\Backup*/
 
-BACKUP DATABASE iBP2_2017_09_07 TO
+BACKUP DATABASE BP2_2017_09_07 TO
 DISK ='C:\BP2\Backup\BP2_2017_09_07.bak'
 
 BACKUP DATABASE BP2_2017_09_07 TO
