@@ -1,28 +1,32 @@
 /*1.
-Kroz SQL kod napraviti bazu podataka koja nosi ime vašeg broja dosijea, a zatim u svojoj bazi podataka kreirati
-tabele sa sljedeæom strukturom:
+Kroz SQL kod napraviti bazu podataka koja nosi ime vaÅ¡eg broja dosijea, 
+a zatim u svojoj bazi podataka kreirati
+tabele sa sljedeÄ‡om strukturom:
+
 a) Klijenti
 i. Ime, polje za unos 50 karaktera (obavezan unos)
 ii. Prezime, polje za unos 50 karaktera (obavezan unos)
 iii. Grad, polje za unos 50 karaktera (obavezan unos)
 iv. Email, polje za unos 50 karaktera (obavezan unos)
 v. Telefon, polje za unos 50 karaktera (obavezan unos)
+
 b) Racuni
 i. DatumOtvaranja, polje za unos datuma (obavezan unos)
 ii. TipRacuna, polje za unos 50 karaktera (obavezan unos)
 iii. BrojRacuna, polje za unos 16 karaktera (obavezan unos)
 iv. Stanje, polje za unos decimalnog broja (obavezan unos)
+
 c) Transakcije
 i. Datum, polje za unos datuma i vremena (obavezan unos)
-ii. Primatelj polje za unos 50 karaktera – (obavezan unos)
+ii. Primatelj polje za unos 50 karaktera - (obavezan unos)
 iii. BrojRacunaPrimatelja, polje za unos 16 karaktera (obavezan unos)
 iv. MjestoPrimatelja, polje za unos 50 karaktera (obavezan unos)
 v. AdresaPrimatelja, polje za unos 50 karaktera (nije obavezan unos)
 vi. Svrha, polje za unos 200 karaktera (nije obavezan unos)
 vii. Iznos, polje za unos decimalnog broja (obavezan unos)
 
-Napomena: Klijent moe imati više otvorenih raèuna, dok se svaki raèun vee iskljuèivo za jednog klijenta. Sa
-raèuna klijenta se provode transakcije, dok se svaka pojedinaèna transakcija provodi sa jednog raèuna
+Napomena: Klijent moÅ¾e imati viÅ¡e otvorenih raÄuna, dok se svaki raÄun veÅ¾e iskljuÄivo za jednog klijenta. Sa
+raÄuna klijenta se provode transakcije, dok se svaka pojedinaï¿½na transakcija provodi sa jednog raÄuna
 */
 
 
@@ -31,31 +35,31 @@ raèuna klijenta se provode transakcije, dok se svaka pojedinaèna transakcija pro
 
 
 
-/*3.Kreirati uskladištenu proceduru za unos novog raèuna. Obavezno provjeriti ispravnost kreirane procedure.*/
+/*3.Kreirati uskladiÅ¡tenu proceduru za unos novog raÄuna. Obavezno provjeriti ispravnost kreirane procedure.*/
 
 
 
 /*4.
- Iz baze podataka Northwind u svoju bazu podataka prebaciti sljedeæe podatke:
-a) U tabelu Klijenti prebaciti sve kupce koji su obavljali narudbe u 1996. godini
+ Iz baze podataka Northwind u svoju bazu podataka prebaciti sljedeï¿½e podatke:
+a) U tabelu Klijenti prebaciti sve kupce koji su obavljali narudï¿½be u 1996. godini
 i. ContactName (do razmaka) -> Ime
 ii. ContactName (poslije razmaka) -> Prezime
 iii. City -> Grad
-iv. ContactName@northwind.ba -> Email (Izmeğu imena i prezime staviti taèku)
+iv. ContactName@northwind.ba -> Email (Izmeï¿½u imena i prezime staviti taï¿½ku)
 v. Phone -> Telefon
-b) Koristeæi prethodno kreiranu proceduru u tabelu Racuni dodati 10 raèuna za razlièite kupce
-(proizvoljno). Odreğenim kupcima pridruiti više raèuna.
+b) Koristeï¿½i prethodno kreiranu proceduru u tabelu Racuni dodati 10 raÄuna za razliï¿½ite kupce
+(proizvoljno). Odreï¿½enim kupcima pridruï¿½iti viï¿½e raÄuna.
 
-c) Za svaki prethodno dodani raèun u tabelu Transakcije dodati po 10 transakcija. Podatke za tabelu
-Transakcije preuzeti RANDOM iz Northwind baze podataka i to poštujuæi sljedeæa pravila:
+c) Za svaki prethodno dodani raÄun u tabelu Transakcije dodati po 10 transakcija. Podatke za tabelu
+Transakcije preuzeti RANDOM iz Northwind baze podataka i to poï¿½tujuï¿½i sljedeï¿½a pravila:
 i. OrderDate (Orders) -> Datum
 ii. ShipName (Orders) - > Primatelj
 iii. OrderID + '00000123456' (Orders) -> BrojRacunaPrimatelja
 iv. ShipCity (Orders) -> MjestoPrimatelja,
 v. ShipAddress (Orders) -> AdresaPrimatelja,
 vi. NULL -> Svrha,
-vii. Ukupan iznos narudbe (Order Details) -> Iznos
-Napomena (c): ID raèuna ruèno izmijeniti u podupitu prilikom inserta podataka
+vii. Ukupan iznos narudï¿½be (Order Details) -> Iznos
+Napomena (c): ID raÄuna ruï¿½no izmijeniti u podupitu prilikom inserta podataka
 */
 
 
@@ -63,38 +67,38 @@ Napomena (c): ID raèuna ruèno izmijeniti u podupitu prilikom inserta podataka
 
 
 /*5.
- Svim raèunima èiji vlasnik dolazi iz Londona, a koji su otvoreni u 8. mjesecu, stanje uveæati za 500. Grad i mjesec
+ Svim raÄunima ï¿½iji vlasnik dolazi iz Londona, a koji su otvoreni u 8. mjesecu, stanje uveï¿½ati za 500. Grad i mjesec
 se mogu proizvoljno mijenjati kako bi se rezultat komande prilagodio vlastitim podacima
 */
 
 
 /*6.
-Kreirati view (pogled) koji prikazuje ime i prezime (spojeno), grad, email i telefon klijenta, zatim tip raèuna, broj
-raèuna i stanje, te za svaku transakciju primatelja, broj raèuna primatelja i iznos. Voditi raèuna da se u rezultat
-ukljuèe i klijenti koji nemaju otvoren niti jedan raèun
+Kreirati view (pogled) koji prikazuje ime i prezime (spojeno), grad, email i telefon klijenta, zatim tip raÄuna, broj
+raÄuna i stanje, te za svaku transakciju primatelja, broj raÄuna primatelja i iznos. Voditi raÄuna da se u rezultat
+ukljuï¿½e i klijenti koji nemaju otvoren niti jedan raÄun
 */
 
 
 
 /*7.
-Kreirati uskladištenu proceduru koja æe na osnovu proslijeğenog broja raèuna klijenta prikazati podatke o
-vlasniku raèuna (ime i prezime, grad i telefon), broj i stanje raèuna te ukupan iznos transakcija provedenih sa
-raèuna. Ukoliko se ne proslijedi broj raèuna, potrebno je prikazati podatke za sve raèune. Sve kolone koje
+Kreirati uskladiÅ¡tenu proceduru koja Ä‡e na osnovu proslijeÄ‘enog broja raÄuna klijenta prikazati podatke o
+vlasniku raÄuna (ime i prezime, grad i telefon), broj i stanje raÄuna te ukupan iznos transakcija provedenih sa
+raÄuna. Ukoliko se ne proslijedi broj raÄuna, potrebno je prikazati podatke za sve raÄune. Sve kolone koje
 prikazuju NULL vrijednost formatirati u 'N/A'. U proceduri koristiti prethodno kreirani view. Obavezno provjeriti
 ispravnost kreirane procedure
 */
 
 
 /*8.
-Kreirati uskladištenu proceduru koja æe na osnovu unesenog identifikatora klijenta vršiti brisanje klijenta
-ukljuèujuæi sve njegove raèune zajedno sa transakcijama. Obavezno provjeriti ispravnost kreirane procedure
+Kreirati uskladiÅ¡tenu proceduru koja Ä‡e na osnovu unesenog identifikatora klijenta vrÅ¡iti brisanje klijenta
+ukljuÄujuÄ‡i sve njegove raÄune zajedno sa transakcijama. Obavezno provjeriti ispravnost kreirane procedure
 */
 
 
 
 /*9.
 Komandu iz zadatka 5. pohraniti kao proceduru a kao parametre proceduri proslijediti naziv grada, mjesec i iznos
-uveæanja raèuna. Obavezno provjeriti ispravnost kreirane procedure
+uveÄanja raÄuna. Obavezno provjeriti ispravnost kreirane procedure
 */
 
 

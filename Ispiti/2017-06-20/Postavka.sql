@@ -1,5 +1,6 @@
 /*
-1.	Kroz SQL kod, napraviti bazu podataka koja nosi ime vašeg broja dosijea. Fajlove baze podataka smjestiti na sljedeæe lokacije:
+1.	Kroz SQL kod, napraviti bazu podataka koja nosi ime vaÅ¡eg broja dosijea. 
+Fajlove baze podataka smjestiti na sljedeÄ‡e lokacije:
 a)	Data fajl: D:\BP2\Data
 b)	Log fajl: D:\BP2\Log
 
@@ -7,21 +8,21 @@ b)	Log fajl: D:\BP2\Log
 
 
 /*
-2.	U svojoj bazi podataka kreirati tabele sa sljedeæom strukturom:
+2.	U svojoj bazi podataka kreirati tabele sa sljedeÄ‡om strukturom:
 a)	Proizvodi
-i.	ProizvodID, cjelobrojna vrijednost i primarni kljuè
+i.	ProizvodID, cjelobrojna vrijednost i primarni kljuÄ
 ii.	Sifra, polje za unos 25 UNICODE karaktera (jedinstvena vrijednost i obavezan unos)
 iii.	Naziv, polje za unos 50 UNICODE karaktera (obavezan unos)
 iv.	Kategorija, polje za unos 50 UNICODE karaktera (obavezan unos)
 v.	Cijena, polje za unos decimalnog broja (obavezan unos)
 b)	Narudzbe
-i.	NarudzbaID, cjelobrojna vrijednost i primarni kljuè,
+i.	NarudzbaID, cjelobrojna vrijednost i primarni kljuÄ,
 ii.	BrojNarudzbe, polje za unos 25 UNICODE karaktera (jedinstvena vrijednost i obavezan unos)
 iii.	Datum, polje za unos datuma (obavezan unos),
 iv.	Ukupno, polje za unos decimalnog broja (obavezan unos)
 c)	StavkeNarudzbe
-i.	ProizvodID, cjelobrojna vrijednost i dio primarnog kljuèa,
-ii.	NarudzbaID, cjelobrojna vrijednost i dio primarnog kljuèa,
+i.	ProizvodID, cjelobrojna vrijednost i dio primarnog kljuÄa,
+ii.	NarudzbaID, cjelobrojna vrijednost i dio primarnog kljuÄa,
 iii.	Kolicina, cjelobrojna vrijednost (obavezan unos)
 iv.	Cijena, polje za unos decimalnog broja (obavezan unos)
 v.	Popust, polje za unos decimalnog broja (obavezan unos)
@@ -30,22 +31,22 @@ v.	Popust, polje za unos decimalnog broja (obavezan unos)
 
 
 /*
-3.	Iz baze podataka AdventureWorks2014 u svoju bazu podataka prebaciti sljedeæe podatke:
+3.	Iz baze podataka AdventureWorks2014 u svoju bazu podataka prebaciti sljedeÄ‡e podatke:
 a)	U tabelu Proizvodi dodati sve proizvode koji su prodavani u 2014. godini
 i.	ProductNumber -> Sifra
 ii.	Name -> Naziv
 iii.	ProductCategory (Name) -> Kategorija
 iv.	ListPrice -> Cijena
-b)	U tabelu Narudzbe dodati sve narudbe obavljene u 2014. godini
+b)	U tabelu Narudzbe dodati sve narudÅ¾be obavljene u 2014. godini
 i.	SalesOrderNumber -> BrojNarudzbe
 ii.	OrderDate - > Datum
 iii.	TotalDue -> Ukupno
-c)	U tabelu StavkeNarudzbe prebaciti sve podatke o detaljima narudbi urağenih u 2014. godini
+c)	U tabelu StavkeNarudzbe prebaciti sve podatke o detaljima narudÅ¾bi uraÄ‘enih u 2014. godini
 i.	OrderQty -> Kolicina
 ii.	UnitPrice -> Cijena
 iii.	UnitPriceDiscount -> Popust
 iv.	LineTotal -> Iznos 
-	Napomena: Zadrati identifikatore zapisa!	
+	Napomena: ZadrÅ¾ati identifikatore zapisa!	
 
 */
 
@@ -53,45 +54,45 @@ iv.	LineTotal -> Iznos
 
 /*
 4.	U svojoj bazi podataka kreirati novu tabelu Skladista sa poljima SkladisteID i Naziv, 
-a zatim je povezati sa tabelom Proizvodi u relaciji više prema više. 
-Za svaki proizvod na skladištu je potrebno èuvati kolièinu (cjelobrojna vrijednost).
+a zatim je povezati sa tabelom Proizvodi u relaciji viÅ¡e prema viÅ¡e. 
+Za svaki proizvod na skladiÅ¡tu je potrebno Äuvati koliÄinu (cjelobrojna vrijednost).
 */
 
 
 /*
-5.	U tabelu Skladista  dodati tri skladišta proizvoljno, a zatim za sve proizvode na svim skladištima postaviti kolièinu na 0 komada.
+5.	U tabelu Skladista  dodati tri skladiÅ¡ta proizvoljno, a zatim za sve proizvode na svim skladiÅ¡tima postaviti koliÄinu na 0 komada.
 */
 
 /*
-6.	Kreirati uskladištenu proceduru koja vrši izmjenu stanja skladišta (kolièina).
-Kao parametre proceduri proslijediti identifikatore proizvoda i skladišta, te kolièinu.	
+6.	Kreirati uskladiÅ¡tenu proceduru koja vrÅ¡i izmjenu stanja skladiÅ¡ta (koliÄina).
+Kao parametre proceduri proslijediti identifikatore proizvoda i skladiÅ¡ta, te koliÄinu.	
 */
 
 
 
 /*
 7.	Nad tabelom Proizvodi kreirati non-clustered indeks nad poljima Sifra i Naziv, 
-a zatim napisati proizvoljni upit koji u potpunosti iskorištava kreirani indeks. 
-Upit obavezno mora sadravati filtriranje podataka.
+a zatim napisati proizvoljni upit koji u potpunosti iskoriÅ¡tava kreirani indeks. 
+Upit obavezno mora sadrÅ¾avati filtriranje podataka.
 */
 
 
-/*8.	Kreirati trigger koji æe sprijeèiti brisanje zapisa u tabeli Proizvodi.*/
+/*8.	Kreirati trigger koji Ä‡e sprijeÄiti brisanje zapisa u tabeli Proizvodi.*/
 
 
 /*
-9.	Kreirati view koji prikazuje sljedeæe kolone: šifru, naziv i cijenu proizvoda, ukupnu prodanu kolièinu i ukupnu zaradu od prodaje.
+9.	Kreirati view koji prikazuje sljedeÄ‡e kolone: Å¡ifru, naziv i cijenu proizvoda, ukupnu prodanu koliÄinu i ukupnu zaradu od prodaje.
 */
 
 
 /*
-10.	Kreirati uskladištenu proceduru koja æe za unesenu šifru proizvoda prikazivati ukupnu prodanu kolièinu i ukupnu zaradu.
-Ukoliko se ne unese šifra proizvoda procedura treba da prikae prodaju svih proizovda. U proceduri koristiti prethodno kreirani view.	
+10.	Kreirati uskladiÅ¡tenu proceduru koja Ä‡e za unesenu Å¡ifru proizvoda prikazivati ukupnu prodanu koliÄinu i ukupnu zaradu.
+Ukoliko se ne unese Å¡ifra proizvoda procedura treba da prikaÅ¾e prodaju svih proizovda. U proceduri koristiti prethodno kreirani view.	
 */
 
 /*
-11.	U svojoj bazi podataka kreirati novog korisnika za login student te mu dodijeliti odgovarajuæu permisiju
-kako bi mogao izvršavati prethodno kreiranu proceduru.
+11.	U svojoj bazi podataka kreirati novog korisnika za login student te mu dodijeliti odgovarajuÄ‡u permisiju
+kako bi mogao izvrÅ¡avati prethodno kreiranu proceduru.
 */
 
 

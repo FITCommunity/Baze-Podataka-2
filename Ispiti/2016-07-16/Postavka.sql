@@ -1,31 +1,31 @@
 /*
-1. Kroz SQL kod, napraviti bazu podataka koja nosi ime vašeg broja dosijea. U postupku kreiranja u
+1. Kroz SQL kod, napraviti bazu podataka koja nosi ime vaÅ¡eg broja dosijea. U postupku kreiranja u
 obzir uzeti samo DEFAULT postavke.
-Unutar svoje baze podataka kreirati tabelu sa sljedeæom strukturom:
+Unutar svoje baze podataka kreirati tabelu sa sljedeÄ‡om strukturom:
 a) Proizvodi:
-I. ProizvodID, automatski generatpr vrijednosti i primarni kljuè
+I. ProizvodID, automatski generatpr vrijednosti i primarni kljuÄ
 II. Sifra, polje za unos 10 UNICODE karaktera (obavezan unos), jedinstvena vrijednost
 III. Naziv, polje za unos 50 UNICODE karaktera (obavezan unos)
 IV. Cijena, polje za unos decimalnog broja (obavezan unos)
 b) Skladista
-I. SkladisteID, automatski generator vrijednosti i primarni kljuè
+I. SkladisteID, automatski generator vrijednosti i primarni kljuÄ
 II. Naziv, polje za unos 50 UNICODE karaktera (obavezan unos)
 III. Oznaka, polje za unos 10 UNICODE karaktera (obavezan unos), jedinstvena vrijednost
 IV. Lokacija, polje za unos 50 UNICODE karaktera (obavezan unos)
 c) SkladisteProizvodi
 I) Stanje, polje za unos decimalnih brojeva (obavezan unos)
 
-Napomena: Na jednom skladištu moe biti uskladišteno više proizvoda, dok isti proizvod moe biti
-uskladišten na više razlièitih skladišta. Onemoguæiti da se isti proizvod na skladištu moe pojaviti više
+Napomena: Na jednom skladiÅ¡tu moÅ¾e biti uskladiÅ¡teno viÅ¡e proizvoda, dok isti proizvod moÅ¾e biti
+uskladiÅ¡ten na viÅ¡e razliÄitih skladiÅ¡ta. OnemoguÄ‡iti da se isti proizvod na skladiÅ¡tu moÅ¾e pojaviti viÅ¡e
 puta
 */
 
 
 /*
 2. Popunjavanje tabela podacima
-a) Putem INSERT komande u tabelu Skladista dodati minimalno 3 skladišta.
-b) Koristeæi bazu podataka AdventureWorks2014, preko INSERT i SELECT komande importovati
-10 najprodavanijih bicikala (kategorija proizvoda 'Bikes' i to sljedeæe kolone:
+a) Putem INSERT komande u tabelu Skladista dodati minimalno 3 skladiÅ¡ta.
+b) KoristeÄ‡i bazu podataka AdventureWorks2014, preko INSERT i SELECT komande importovati
+10 najprodavanijih bicikala (kategorija proizvoda 'Bikes' i to sljedeÄ‡e kolone:
 I. Broj proizvoda (ProductNumber) - > Sifra,
 II. Naziv bicikla (Name) -> Naziv,
 III. Cijena po komadu (ListPrice) -> Cijena,
@@ -35,54 +35,54 @@ importovati sve proizvode tako da stanje bude 100
 
 
 /*3.
-Kreirati uskladištenu proceduru koja æe vršiti poveæanje stanja skladišta za odreğeni proizvod na
-odabranom skladištu. Provjeriti ispravnost procedure.
+Kreirati uskladiÅ¡tenu proceduru koja Ä‡e vrÅ¡iti poveÄanje stanja skladiÅ¡ta za odreÄ‘eni proizvod na
+odabranom skladiÅ¡tu. Provjeriti ispravnost procedure.
 */
 
 
 
 /*4.
  Kreiranje indeksa u bazi podataka nad tabelama
-a) Non-clustered indeks nad tabelom Proizvodi. Potrebno je indeksirati Sifru i Naziv. Takoğer,
-potrebno je ukljuèiti kolonu Cijena
-b) Napisati proizvoljni upit nad tabelom Proizvodi koji u potpunosti iskorištava indeks iz
+a) Non-clustered indeks nad tabelom Proizvodi. Potrebno je indeksirati Sifru i Naziv. TakoÄ‘er,
+potrebno je ukljuÄiti kolonu Cijena
+b) Napisati proizvoljni upit nad tabelom Proizvodi koji u potpunosti iskoriÅ¡tava indeks iz
 prethodnog koraka
 c) Uradite disable indeksa iz koraka a)
 */
 
 /*
-5. Kreirati view sa sljedeæom definicijom. Objekat treba da prikazuje sifru, naziv i cijenu proizvoda,
-oznaku, naziv i lokaciju skladišta, te stanje na skladištu.
+5. Kreirati view sa sljedeÄ‡om definicijom. Objekat treba da prikazuje sifru, naziv i cijenu proizvoda,
+oznaku, naziv i lokaciju skladiÅ¡ta, te stanje na skladiÅ¡tu.
 */
 
 
 /*6.
- Kreirati uskladištenu proceduru koja æe na osnovu unesene šifre proizvoda prikazati ukupno stanje
-zaliha na svim skladištima. U rezultatu prikazati sifru, naziv i cijenu proizvoda te ukupno stanje zaliha.
+ Kreirati uskladiÅ¡tenu proceduru koja Ä‡e na osnovu unesene Å¡ifre proizvoda prikazati ukupno stanje
+zaliha na svim skladiÅ¡tima. U rezultatu prikazati sifru, naziv i cijenu proizvoda te ukupno stanje zaliha.
 U proceduri koristiti prethodno kreirani view. Provjeriti ispravnost kreirane procedure.
 */
 
 /*7.
-. Kreirati uskladištenu proceduru koja æe vršiti upis novih proizvoda, te kao stanje zaliha za uneseni
-proizvod postaviti na 0 za sva skladišta. Provjeriti ispravnost kreirane procedure.
+. Kreirati uskladiÅ¡tenu proceduru koja Ä‡e vrÅ¡iti upis novih proizvoda, te kao stanje zaliha za uneseni
+proizvod postaviti na 0 za sva skladiÅ¡ta. Provjeriti ispravnost kreirane procedure.
 */
 
 /*8.
- Kreirati uskladištenu proceduru koja æe za unesenu šifru proizvoda vršiti brisanje proizvoda
-ukljuèujuæi stanje na svim skladištima. Provjeriti ispravnost procedure.
+ Kreirati uskladiÅ¡tenu proceduru koja Ä‡e za unesenu Å¡ifru proizvoda vrÅ¡iti brisanje proizvoda
+ukljuÄujuï¿½i stanje na svim skladiÅ¡tima. Provjeriti ispravnost procedure.
 */
 
 
 /*9.
- Kreirati uskladištenu proceduru koja æe za unesenu šifru proizvoda, oznaku skladišta ili lokaciju
-skladišta vršiti pretragu prethodno kreiranim view-om (zadatak 5). Procedura obavezno treba da
-vraæa rezultate bez obrzira da li su vrijednosti parametara postavljene. Testirati ispravnost procedure
-u sljedeæim situacijama:
-a) Nije postavljena vrijednost niti jednom parametru (vraæa sve zapise)
-b) Postavljena je vrijednost parametra šifra proizvoda, a ostala dva parametra nisu
-c) Postavljene su vrijednosti parametra šifra proizvoda i oznaka skladišta, a lokacija
+ Kreirati uskladiÅ¡tenu proceduru koja Ä‡e za unesenu Å¡ifru proizvoda, oznaku skladiÅ¡ta ili lokaciju
+skladiÅ¡ta vrÅ¡iti pretragu prethodno kreiranim view-om (zadatak 5). Procedura obavezno treba da
+vraÄ‡a rezultate bez obrzira da li su vrijednosti parametara postavljene. Testirati ispravnost procedure
+u sljedeÄ‡im situacijama:
+a) Nije postavljena vrijednost niti jednom parametru (vraÄ‡a sve zapise)
+b) Postavljena je vrijednost parametra Å¡ifra proizvoda, a ostala dva parametra nisu
+c) Postavljene su vrijednosti parametra Å¡ifra proizvoda i oznaka skladiÅ¡ta, a lokacija
 nije
-d) Postavljene su vrijednosti parametara šifre proizvoda i lokacije, a oznaka skladišta
+d) Postavljene su vrijednosti parametara Å¡ifre proizvoda i lokacije, a oznaka skladiÅ¡ta
 nije
 e) Postavljene su vrijednosti sva tri parametra
 */

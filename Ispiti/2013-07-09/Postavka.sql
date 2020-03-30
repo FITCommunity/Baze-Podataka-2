@@ -1,34 +1,34 @@
 /*
-1. Primjer se radi na bazi Northwind. Marketing odjel zahtjeva izvjeötaj o proizvodima iz kojeg se vidi: naziv dobavljaca u 
-sljedecem formatu: CompanyName(Grad,Adresa) - u izlaz ukljuËiti zagrade, telefon dobavljaca, cijena po komadu, 
-stanje zaliha, razlika stanja zaliha i naruËenih proizvoda. Uslovi su sljedeÊi:
-- Da se prikaûu samo one razlike stanja zaliha gdje ima viöe naruËenih nego öto imamo na stanju 
-- Proizvod ima minimalno jednu narudûbu
-- U obzir ulaze samo oni proizvodi gdje je cijena veÊa od 20
+1. Primjer se radi na bazi Northwind. Marketing odjel zahtjeva izvje≈°taj o proizvodima iz kojeg se vidi: naziv dobavljaca u 
+sljedecem formatu: CompanyName(Grad,Adresa) - u izlaz ukljuƒçiti zagrade, telefon dobavljaca, cijena po komadu, 
+stanje zaliha, razlika stanja zaliha i naruƒçenih proizvoda. Uslovi su sljedeƒái:
+- Da se prika≈æu samo one razlike stanja zaliha gdje ima vi≈°e naruƒçenih nego ≈°to imamo na stanju 
+- Proizvod ima minimalno jednu narud≈æbu
+- U obzir ulaze samo oni proizvodi gdje je cijena veƒáa od 20
 
 */
 
 /*
-2. Primjer se radi na bazi Northwind. Vaöa kompanija ûeli provjeriti neke podatke o isporukama prodate robe kupcima. 
+2. Primjer se radi na bazi Northwind. Va≈°a kompanija ≈æeli provjeriti neke podatke o isporukama prodate robe kupcima. 
 Prvi korak jeste kreiranje spiska kupaca sa: imenom kompanije, kontakt imenom, i brojem telefona.
 Potrebno je sljedece:
-- Broj potrebnih dana za isporuku u odnosu na datum narudûbe
-- Broj utroöenih dana na isporuku u odnosu na datum narudûbe
-- Broj dana koji prikazuje razliku izmedu potrebnih i utroöenih dana
-- Uslov je da broj utroöenih dana bude veci od potrebnog broja dana
+- Broj potrebnih dana za isporuku u odnosu na datum narud≈æbe
+- Broj utro≈°enih dana na isporuku u odnosu na datum narud≈æbe
+- Broj dana koji prikazuje razliku izmedu potrebnih i utro≈°enih dana
+- Uslov je da broj utro≈°enih dana bude veci od potrebnog broja dana
 
 */
 
 
 /*
 . Koristeci bazu AdventureWorksLT2012 kreirati upit koji prikazuje podatke o proizvodima. 
-Izlaz treba da sadrûi sljedece kolone: kategoriju proizvoda, model proizvoda, broj proizvoda, cijenu, boju, 
-te ukupnu koliËinu prodatih proizvoda. Uslovi su sljedeci:
+Izlaz treba da sadr≈æi sljedece kolone: kategoriju proizvoda, model proizvoda, broj proizvoda, cijenu, boju, 
+te ukupnu koliƒçinu prodatih proizvoda. Uslovi su sljedeci:
 
-- u listu ukljuËiti i one proizvode koji nisu prodani niti jednom,
+- u listu ukljuƒçiti i one proizvode koji nisu prodani niti jednom,
 - ukoliko se pojavi kolona sa NULL vrijednostima iste je potrebno zamijeniti brojem 0 (nula),
-- prikazati samo proizvode koji pripadaju kategoriji "Mountain Bikes", crne su boje i imaju cijenu veÊu od 2000
-- Takoder, u listu ukljuËiti i one proizvode ciji se broj zavröava slovom 'L' i bijele su boje,
+- prikazati samo proizvode koji pripadaju kategoriji "Mountain Bikes", crne su boje i imaju cijenu veƒáu od 2000
+- Takoder, u listu ukljuƒçiti i one proizvode ciji se broj zavr≈°ava slovom 'L' i bijele su boje,
 - Izlaz je potrebno sortirati po kolicini prodatih proizvoda opadajucim redoslijedom
 
 */
@@ -39,9 +39,9 @@ te ukupnu koliËinu prodatih proizvoda. Uslovi su sljedeci:
 
 
 /*2.
-U vaöoj bazi podataka keirati tabele sa sljedeÊim parametrima:
+U va≈°oj bazi podataka keirati tabele sa sljedeÔøΩim parametrima:
 - Kupci
-	- KupacID, automatski generator vrijednosti i primarni kljuË
+	- KupacID, automatski generator vrijednosti i primarni kljuƒç
  	- Ime, polje za unos 35 UNICODE karaktera (obavezan unos),
 	- Prezime, polje za unos 35 UNICODE karaktera (obavezan unos),
 	- Telefon, polje za unos 15 karaktera (nije obavezan),
@@ -49,7 +49,7 @@ U vaöoj bazi podataka keirati tabele sa sljedeÊim parametrima:
 	- KorisnickoIme, polje za unos 15 karaktera (obavezan unos) jedinstvena vrijednost,
 	- Lozinka, polje za unos 15 karaktera (obavezan unos)
 - Proizvodi
-	- ProizvodID, automatski generator vrijednosti i primarni kljuË
+	- ProizvodID, automatski generator vrijednosti i primarni kljuƒç
 	- Sifra, polje za unos 25 karaktera (obavezan unos)
 	- Naziv, polje za unos 50 UNICODE karaktera (obavezan unos)
 	- Cijena, polje za unos decimalnog broj (obavezan unos)
@@ -57,9 +57,9 @@ U vaöoj bazi podataka keirati tabele sa sljedeÊim parametrima:
 
 - Narudzbe 
 
- 	- NarudzbaID, automatski generator vrijednosti i primarni kljuË
- 	- KupacID, spoljni kljuË prema tabeli Kupci,
-	- ProizvodID, spoljni kljuË prema tabeli Proizvodi,
+ 	- NarudzbaID, automatski generator vrijednosti i primarni kljuƒç
+ 	- KupacID, spoljni kljuƒç prema tabeli Kupci,
+	- ProizvodID, spoljni kljuƒç prema tabeli Proizvodi,
 	- Kolicina, polje za unos cijelog broja (obavezan unos)
 	- Popust, polje za unos decimalnog broj (obavezan unos), DEFAULT JE 0
 
@@ -101,36 +101,36 @@ nazivom tempBrojDosijea (npr. temp2046) 5 proizvoda i to sljedece kolone:
 */
 
 /*6.
-. U vaöoj bazi podataka kreirajte stored proceduru koja ce raditi INSERT podataka u tabelu Narudzbe. 
-Podaci se moraju unijeti preko parametara. Takoder , u proceduru dodati aûuriranje (UPDATE) polja 'Zaliha' (tabela Proizvodi) u 
-zavisnosti od prosljeene koliËine. Proceduru pohranite pod nazivom usp_Narudzbe_Insert.
+. U va≈°oj bazi podataka kreirajte stored proceduru koja ce raditi INSERT podataka u tabelu Narudzbe. 
+Podaci se moraju unijeti preko parametara. Takoder , u proceduru dodati a≈æuriranje (UPDATE) polja 'Zaliha' (tabela Proizvodi) u 
+zavisnosti od prosljeƒëene koliƒçine. Proceduru pohranite pod nazivom usp_Narudzbe_Insert.
 */
 
 
 /*7.
- KoristeÊi proceduru koju ste kreirali u prethodnom zadatku kreirati 5 narudûbi.
+ Koristeƒái proceduru koju ste kreirali u prethodnom zadatku kreirati 5 narud≈æbi.
 */
 
 
 
 
 /*8.
- U vaöoj bazi podataka kreirajte view koji Êe sadrûavati sljedeca polja: ime kupca, prezime kupca, telefon, 
- öifra proizvoda, naziv proizvoda, cijena, kolicina, te ukupno. View pohranite pod nazivom view_Kupci_Narudzbe.
+ U va≈°oj bazi podataka kreirajte view koji ƒáe sadr≈æavati sljedeca polja: ime kupca, prezime kupca, telefon, 
+ ≈°ifra proizvoda, naziv proizvoda, cijena, kolicina, te ukupno. View pohranite pod nazivom view_Kupci_Narudzbe.
 */
 
 
 /*9.
-. U vaöoj bazi podataka kreirajte stored proceduru koja ce na osnovu proslijedenog imena ili 
-prezimena kupca (jedan parametar) kao rezultat vratiti sve njegove narudûbe. 
+. U va≈°oj bazi podataka kreirajte stored proceduru koja ce na osnovu proslijedenog imena ili 
+prezimena kupca (jedan parametar) kao rezultat vratiti sve njegove narud≈æbe. 
 Kao izvor podataka koristite view kreiran u zadatku 8. Proceduru pohranite pod nazivom usp_Kupci_Narudzbe.
 */
 
 
 /*10.
-. U vaöoj bazi podataka kreirajte stored proceduru koja ce raditi DELETE zapisa iz tabele Proizvodi.
-Proceduru pohranite pod nazivom usp_Proizvodi_Delete. Pokuöajte obrisati jedan od proizvoda kojeg ste dodatli u zadatku 5.
-Modifikujte proceduru tako da obriöe proizvod i svu njegovu historiju prodaje (Narudzbe).
+. U va≈°oj bazi podataka kreirajte stored proceduru koja ce raditi DELETE zapisa iz tabele Proizvodi.
+Proceduru pohranite pod nazivom usp_Proizvodi_Delete. Poku≈°ajte obrisati jedan od proizvoda kojeg ste dodatli u zadatku 5.
+Modifikujte proceduru tako da obri≈°e proizvod i svu njegovu historiju prodaje (Narudzbe).
 */
 
 
