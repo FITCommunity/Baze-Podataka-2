@@ -6,3 +6,4 @@
 
 * [Enis Mulić](https://github.com/PancakeAlchemist)  
 * [Khaled El-Zayyat](https://github.com/Chessbrain)
+* Ismail Džigal

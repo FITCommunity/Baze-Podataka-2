@@ -123,12 +123,15 @@ INSERT INTO Proizvod
 SELECT 
 	P.ProductID, 
 	P.ProductName, 
-	S.CompanyName, 
+	( 
+	  SELECT S.ComapanyName 
+	  FROM Northwind.dbo.Suppliers AS S 
+	  WHERE S.SupplierID = P.SupplierID 
+	),
 	P.UnitsInStock, 
 	P.UnitsOnOrder
 FROM Northwind.dbo.Products AS P 
-	INNER JOIN Northwind.dbo.Suppliers AS S ON P.SupplierID = S.SupplierID
-WHERE P.ProductID IN (SELECT P.ProductID FROM Northwind.dbo.Products)
+WHERE P.SupplierID IN (SELECT S.SupplierID FROM Northwind.dbo.Suppliers AS S)
 
 
 --detaljinarudzbe
