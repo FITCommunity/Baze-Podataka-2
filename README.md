@@ -4,6 +4,7 @@
 
 # Contributors
 
-* [Enis Mulić](https://github.com/PancakeAlchemist)  
+* [Enis Mulić](https://github.com/PancakeAlchemist) 
+* [Berin Mujčinović](https://github.com/BerMu147) 
 * [Khaled El-Zayyat](https://github.com/Chessbrain)
 * Ismail Džigal
