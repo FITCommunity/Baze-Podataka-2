@@ -142,10 +142,15 @@ Koristeći sve tri tabele iz vlastite baze kreirati pogled view_dob_god sljedeć
 Uslov je da se dohvate samo oni zapisi u kojima je narudžba obavljena 2013. ili 2014. godine 
 i da se broj računa dobavljača završava cifrom 1. */
 CREATE VIEW view_dob_god AS
-SELECT D.DobavljacID, DP.ProizvodID, N.NarucenaKolicina, N.CijenaProizvoda,
-	   COUNT(N.NarucenaKolicina * N.CijenaProizvoda) AS Ukupno
-FROM Dobavljac AS D INNER JOIN Narudzba AS N ON D.DobavljacID=N.DobavljacID
-					INNER JOIN DobavljacProizvodi AS DP ON DP.DobavljacID = D.DobavljacID
+SELECT 
+	D.DobavljacID, 
+	DP.ProizvodID, 
+	N.NarucenaKolicina, 
+	N.CijenaProizvoda,
+	N.NarucenaKolicina * N.CijenaProizvoda AS Ukupno
+FROM Dobavljac AS D 
+	INNER JOIN Narudzba AS N ON D.DobavljacID = N.DobavljacID
+	INNER JOIN DobavljacProizvodi AS DP ON DP.DobavljacID = D.DobavljacID
 WHERE (YEAR(N.DatumNarudzbe) = 2013 OR YEAR(N.DatumNarudzbe) = 2014) AND
 	  D.Dobavljac_br_rac LIKE '%1'
 GROUP BY D.DobavljacID, DP.ProizvodID, N.NarucenaKolicina, N.CijenaProizvoda
