@@ -8,3 +8,4 @@
 * [Berin Mujčinović](https://github.com/BerMu147) 
 * [Khaled El-Zayyat](https://github.com/Chessbrain)
 * Ismail Džigal
+* Neira Šetka
