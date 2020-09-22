@@ -1,13 +1,13 @@
 # Contributing to FITCommunity/Baze-Podataka-2
 
 ## Postavke
-* Fajl sa postavkama zadataka nazvati `Postavka.sql` u slučaju da je bila samo jedna grupa na ispitnom roku ili `Grupa <Oznaka> - Postavka.sql` u slučaju da je bilo više grupa na ispitnom roku
+* Fajl sa postavkama zadataka nazvati `BP2_yyyy-MM-dd_Postavka.sql` u slučaju da je bila samo jedna grupa na ispitnom roku ili `BP2_yyyy-MM-dd_Grupa-A_Postavka.sql` u slučaju da je bilo više grupa na ispitnom roku
 * Postavku uploadovati u folder `Ispiti/YYYY-MM-DD/`
 
 
 ## Rješenja
 * Rješenja ispitnog zadatka treba uploadovati u isti folder gdje se nalazi i postavka istih (`Ispiti/YYYY-MM-DD/`)
-* Rješenja nazvati `Rjesenje.sql` u slučaju da je bila samo jedna grupa na ispitnom roku ili `Grupa <Oznaka> - Rjesenje.sql` u slučaju da je bilo više grupa na ispitnom roku
+* Rješenja nazvati `BP2_yyyy-MM-dd_Rjesenje.sql` u slučaju da je bila samo jedna grupa na ispitnom roku ili `BP2_yyyy-MM-dd_Grupa-A_Rjesenje.sql` u slučaju da je bilo više grupa na ispitnom roku
 
 
 ## Greške/Bugovi
