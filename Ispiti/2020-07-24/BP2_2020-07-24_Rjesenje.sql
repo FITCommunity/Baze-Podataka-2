@@ -147,7 +147,7 @@ SET st_kat =
 	CASE
 		WHEN YEAR(CURRENT_TIMESTAMP) - god_rod <= 30 THEN 'I'
 		WHEN YEAR(CURRENT_TIMESTAMP) - god_rod BETWEEN 31 AND 49 THEN 'II'
-		WHEN YEAR(CURRENT_TIMESTAMP) - god_rod >= 50 THEN 'III'
+		ELSE 'III'
 	END;
 
 SELECT * FROM radnik;
@@ -272,11 +272,7 @@ BEGIN
 	ALTER COLUMN online_narudzba NVARCHAR(3)
 
 	UPDATE prodaja
-	SET online_narudzba =
-		CASE
-			WHEN online_narudzba = 1 THEN 'YES'
-			WHEN online_narudzba = 0 THEN 'NO'
-		END
+	SET online_narudzba = CASE online_narudzba = 1 THEN 'YES' ELSE 'NO' END
 
 	ALTER TABLE prodaja
 	ADD CONSTRAINT online_narudzba_value_check CHECK (online_narudzba = 'YES' OR online_narudzba = 'NO')
@@ -287,11 +283,7 @@ SELECT * FROM prodaja
 
 /* Provjera online_narudzba_value_check CONSTRAINTA */
 UPDATE prodaja 
-SET online_narudzba =
-	CASE
-		WHEN online_narudzba = 'YES' THEN '1'
-		WHEN online_narudzba = 'NO'  THEN '0'
-	END 
+SET online_narudzba = CASE WHEN online_narudzba = 'YES' THEN '1' ELSE '0' END 
 
 /*
 --9
