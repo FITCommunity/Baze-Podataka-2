@@ -277,9 +277,13 @@ Prebrojati kod kolikog broja dobavljača je broj računa kreiran korištenjem vi
 Jednom riječi se podrazumijeva skup slova koji nije prekinut blank (space) znakom. 
 */
 --10 bodova
-SELECT COUNT(*)
-FROM Dobavljac
-WHERE LEN(Dobavljac_br_rac) - LEN(REPLACE(Dobavljac_br_rac, ' ', '')) + 1 > 1
+
+select COUNT(*) as prebrojano
+from   dobavljac
+where  LEN(SUBSTRING(dobavljac_br_rac, 0, CHARINDEX('0', dobavljac_br_rac))) > 
+       LEN(SUBSTRING(naziv_dobavljaca, 0, CHARINDEX(' ', naziv_dobavljaca))) and
+       CHARINDEX(' ', naziv_dobavljaca) != 0
+
 ----------------------------
 --9.
 ----------------------------
