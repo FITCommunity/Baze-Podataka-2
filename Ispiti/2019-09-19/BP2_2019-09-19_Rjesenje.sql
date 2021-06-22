@@ -142,7 +142,7 @@ SELECT
 	SUBSTRING(k.br_kreditne, 5, LEN(k.br_kreditne)) AS br_kreditne, 
 	SUBSTRING(o.mail_lozinka,10, LEN(o.mail_lozinka)-10) AS mail_lozinka,
 	o.br_tel, 
-	len(REPLACE(REPLACE(REPLACE(REPLACE(br_tel,' ',''),')',''),'(',''),'-','')) as br_cifri_br_tel
+	len(REPLACE(REPLACE(REPLACE(REPLACE(o.br_tel,' ',''),')',''),'(',''),'-','')) as br_cifri_br_tel
 FROM osoba as o inner join kreditna AS k ON o.kreditnaID = k.kreditnaID
 
 
