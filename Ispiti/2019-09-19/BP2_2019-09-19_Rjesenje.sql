@@ -22,7 +22,7 @@ CREATE TABLE kreditna
 (
 	kreditnaID INT CONSTRAINT PK_kreditna PRIMARY KEY (kreditnaID),
 	br_kreditne NVARCHAR(25) NOT NULL,
-	dtm_evid DATE NOT NULL
+	dtm_evid DATE
 );
 GO
 
@@ -39,9 +39,9 @@ CREATE TABLE osoba
 (
 	osobaID INT CONSTRAINT PK_osoba PRIMARY KEY (osobaID),
 	kreditnaID INT CONSTRAINT FK_osoba_kreditna FOREIGN KEY (kreditnaID) REFERENCES kreditna (kreditnaID) NOT NULL,
-	mail_lozinka NVARCHAR(128) NOT NULL,
-	lozinka NVARCHAR(10) NOT NULL,
-	br_tel NVARCHAR(25) NOT NULL
+	mail_lozinka NVARCHAR(128),
+	lozinka NVARCHAR(10),
+	br_tel NVARCHAR(25)
 );
 GO
 
@@ -142,13 +142,29 @@ SELECT
 	SUBSTRING(k.br_kreditne, 5, LEN(k.br_kreditne)) AS br_kreditne, 
 	SUBSTRING(o.mail_lozinka,10, LEN(o.mail_lozinka)-10) AS mail_lozinka,
 	o.br_tel, 
-	LEN(o.br_tel) as br_cifri_br_tel
+	LEN(REPLACE(REPLACE(REPLACE(REPLACE(o.br_tel,' ',''),')',''),'(',''),'-','')) as br_cifri_br_tel
 FROM osoba as o inner join kreditna AS k ON o.kreditnaID = k.kreditnaID
 
 
 SELECT * FROM view_kred_mail
 
+-----------------------------------------------------------------------------------------------------------------------------
+--Alternativno rjesenje za 3. Zadatak
+
 GO
+
+CREATE FUNCTION GetDigitsFromString (@string varchar(max))
+RETURNS varchar(max)
+AS
+BEGIN
+    WHILE  @String like '%[^0-9]%'
+    SET    @String = REPLACE(@String, SUBSTRING(@String, PATINDEX('%[^0-9]%', @String), 1), '')
+    RETURN @String
+END
+
+GO
+SELECT LEN(dbo.GetDigitsFromString(br_tel))
+FROM osoba
 
 -----------------------------------------------------------------------------------------------------------------------------
 /*
