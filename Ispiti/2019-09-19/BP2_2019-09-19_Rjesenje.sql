@@ -142,13 +142,29 @@ SELECT
 	SUBSTRING(k.br_kreditne, 5, LEN(k.br_kreditne)) AS br_kreditne, 
 	SUBSTRING(o.mail_lozinka,10, LEN(o.mail_lozinka)-10) AS mail_lozinka,
 	o.br_tel, 
-	len(REPLACE(REPLACE(REPLACE(REPLACE(o.br_tel,' ',''),')',''),'(',''),'-','')) as br_cifri_br_tel
+	LEN(REPLACE(REPLACE(REPLACE(REPLACE(o.br_tel,' ',''),')',''),'(',''),'-','')) as br_cifri_br_tel
 FROM osoba as o inner join kreditna AS k ON o.kreditnaID = k.kreditnaID
 
 
 SELECT * FROM view_kred_mail
 
+-----------------------------------------------------------------------------------------------------------------------------
+--Alternativno rjesenje za 3. Zadatak
+
 GO
+
+CREATE FUNCTION GetDigitsFromString (@string varchar(max))
+RETURNS varchar(max)
+AS
+BEGIN
+    WHILE  @String like '%[^0-9]%'
+    SET    @String = REPLACE(@String, SUBSTRING(@String, PATINDEX('%[^0-9]%', @String), 1), '')
+    RETURN @String
+END
+
+GO
+SELECT LEN(dbo.GetDigitsFromString(br_tel))
+FROM osoba
 
 -----------------------------------------------------------------------------------------------------------------------------
 /*
