@@ -322,7 +322,7 @@ Obavezno napisati kod za pregled sadržaja pogleda.
 
 create view view_sifra_transakc
 as
-select	n.naziv_nabavljaca, SUBSTRING(loginID ,charindex('\', loginID) + 1, len(SUBSTRING(loginID ,charindex('\', loginID) + 1, len(loginID)) ) - 1) + '_' +
+select distinct n.naziv_nabavljaca, SUBSTRING(loginID ,charindex('\', loginID) + 1, len(SUBSTRING(loginID ,charindex('\', loginID) + 1, len(loginID)) ) - 1) + '_' +
 		left(n.br_racuna, CHARINDEX('0', br_racuna) - 1) sifra_transakc
 from	radnik r join nabavka n
 on		r.radnikID = n.nabavaljacID
