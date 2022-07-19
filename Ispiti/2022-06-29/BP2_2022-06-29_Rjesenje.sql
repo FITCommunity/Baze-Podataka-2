@@ -1,22 +1,22 @@
 --29.06.2022.
 
---BAZE PODATAKA II – ISPIT
+--BAZE PODATAKA II ï¿½ ISPIT
 
---***Prilikom izrade zadataka, OBAVEZNO iznad svakog zadatka napisati redni broj zadatka npr (4c). Zadaci koji ne budu oznaèeni na prethodno definisan naèin neæe biti evaluirani.
+--***Prilikom izrade zadataka, OBAVEZNO iznad svakog zadatka napisati redni broj zadatka npr (4c). Zadaci koji ne budu oznaï¿½eni na prethodno definisan naï¿½in neï¿½e biti evaluirani.
 
---1.	Kroz SQL kod kreirati bazu podataka sa imenom vašeg broja indeksa.
+--1.	Kroz SQL kod kreirati bazu podataka sa imenom vaï¿½eg broja indeksa.
 CREATE DATABASE brojIndexa
 GO
 USE brojIndexa
 GO
---2.	U kreiranoj bazi podataka kreirati tabele sa sljedeæom strukturom:
+--2.	U kreiranoj bazi podataka kreirati tabele sa sljedeï¿½om strukturom:
 --a)	Proizvodi
---•	ProizvodID, cjelobrojna vrijednost i primarni kljuè, autoinkrement
---•	Naziv, 50 UNICODE karaktera (obavezan unos)
---•	SifraProizvoda, 25 UNICODE karaktera (obavezan unos)
---•	Boja, 15 UNICODE karaktera 
---•	NazivKategorije, 50 UNICODE (obavezan unos)
---•	Tezina, decimalna vrijednost sa 2 znaka iza zareza
+--ï¿½	ProizvodID, cjelobrojna vrijednost i primarni kljuï¿½, autoinkrement
+--ï¿½	Naziv, 50 UNICODE karaktera (obavezan unos)
+--ï¿½	SifraProizvoda, 25 UNICODE karaktera (obavezan unos)
+--ï¿½	Boja, 15 UNICODE karaktera 
+--ï¿½	NazivKategorije, 50 UNICODE (obavezan unos)
+--ï¿½	Tezina, decimalna vrijednost sa 2 znaka iza zareza
 CREATE TABLE Proizvodi
 (
 	ProizvodID INT CONSTRAINT PK_Proizvod PRIMARY KEY IDENTITY(1,1),
@@ -29,14 +29,14 @@ CREATE TABLE Proizvodi
 )
 GO
 --b)	ZaglavljeNarudzbe 
---•	NarudzbaID, cjelobrojna vrijednost i primarni kljuè, autoinkrement
---•	DatumNarudzbe, polje za unos datuma i vremena (obavezan unos)
---•	DatumIsporuke, polje za unos datuma i vremena
---•	ImeKupca, 50 UNICODE (obavezan unos)
---•	PrezimeKupca, 50 UNICODE (obavezan unos)
---•	NazivTeritorije, 50 UNICODE (obavezan unos)
---•	NazivRegije, 50 UNICODE (obavezan unos)
---•	NacinIsporuke, 50 UNICODE (obavezan unos)
+--ï¿½	NarudzbaID, cjelobrojna vrijednost i primarni kljuï¿½, autoinkrement
+--ï¿½	DatumNarudzbe, polje za unos datuma i vremena (obavezan unos)
+--ï¿½	DatumIsporuke, polje za unos datuma i vremena
+--ï¿½	ImeKupca, 50 UNICODE (obavezan unos)
+--ï¿½	PrezimeKupca, 50 UNICODE (obavezan unos)
+--ï¿½	NazivTeritorije, 50 UNICODE (obavezan unos)
+--ï¿½	NazivRegije, 50 UNICODE (obavezan unos)
+--ï¿½	NacinIsporuke, 50 UNICODE (obavezan unos)
 CREATE TABLE ZaglavljeNarudzbe
 (
 	NarudzbaID INT CONSTRAINT PK_ZaglavljeNarudzbe PRIMARY KEY IDENTITY(1,1),
@@ -50,11 +50,11 @@ CREATE TABLE ZaglavljeNarudzbe
 )
 GO
 --c)	DetaljiNarudzbe
---•	NarudzbaID, cjelobrojna vrijednost, strani kljuè
---•	ProizvodID, cjelobrojna vrijednost, strani kljuè
---•	Cijena, novèani tip (obavezan unos),
---•	Kolicina, skraæeni cjelobrojni tip (obavezan unos),
---•	Popust, novèani tip (obavezan unos)
+--ï¿½	NarudzbaID, cjelobrojna vrijednost, strani kljuï¿½
+--ï¿½	ProizvodID, cjelobrojna vrijednost, strani kljuï¿½
+--ï¿½	Cijena, novï¿½ani tip (obavezan unos),
+--ï¿½	Kolicina, skraï¿½eni cjelobrojni tip (obavezan unos),
+--ï¿½	Popust, novï¿½ani tip (obavezan unos)
 CREATE TABLE DetaljiNarudzbe
 (
 	NarudzbaID INT NOT NULL CONSTRAINT FK_ZaglavljeNarudzbe FOREIGN KEY REFERENCES ZaglavljeNarudzbe(NarudzbaID),
@@ -65,273 +65,412 @@ CREATE TABLE DetaljiNarudzbe
 	DetaljiNarudzbe INT CONSTRAINT PK_DetaljiNarudzbe PRIMARY KEY IDENTITY(1,1)
 )
 GO
---**Jedan proizvod se može više puta naruèiti, dok jedna narudžba može sadržavati više proizvoda. U okviru jedne narudžbe jedan proizvod se može naruèiti više puta.
+--**Jedan proizvod se moï¿½e viï¿½e puta naruï¿½iti, dok jedna narudï¿½ba moï¿½e sadrï¿½avati viï¿½e proizvoda. U okviru jedne narudï¿½be jedan proizvod se moï¿½e naruï¿½iti viï¿½e puta.
 --7 bodova
---3.	Iz baze podataka AdventureWorks u svoju bazu podataka prebaciti sljedeæe podatke:
---a)	U tabelu Proizvodi dodati sve proizvode, na mjestima gdje nema pohranjenih podataka o težini zamijeniti vrijednost sa 0
---•	ProductID -> ProizvodID
---•	Name  -> Naziv 	
---•	ProductNumber -> SifraProizvoda
---•	Color -> Boja 
---•	Name (ProductCategory) -> NazivKategorije
---•	Weight -> Tezina
-SET IDENTITY_INSERT  Proizvodi ON
-INSERT INTO Proizvodi(ProizvodID,Naziv,SifraProizvoda,Boja,NazivKategorije,Tezina)
-SELECT P.ProductID,P.Name,P.ProductNumber,P.Color,PC.Name,ISNULL(P.Weight,0)
+--3.	Iz baze podataka AdventureWorks u svoju bazu podataka prebaciti sljedeï¿½e podatke:
+--a)	U tabelu Proizvodi dodati sve proizvode, na mjestima gdje nema pohranjenih podataka o teï¿½ini zamijeniti vrijednost sa 0
+--ï¿½	ProductID -> ProizvodID
+--ï¿½	Name  -> Naziv 	
+--ï¿½	ProductNumber -> SifraProizvoda
+--ï¿½	Color -> Boja 
+--ï¿½	Name (ProductCategory) -> NazivKategorije
+--ï¿½	Weight -> Tezina
+SET IDENTITY_INSERT Proizvodi ON
+
+INSERT INTO Proizvodi(ProizvodID, Naziv, SifraProizvoda, Boja, NazivKategorije, Tezina)
+SELECT 
+    P.ProductID,
+    P.Name,
+    P.ProductNumber,
+    P.Color,
+    PC.Name,
+    ISNULL(P.Weight,0)
 FROM AdventureWorks2017.Production.Product AS P
-INNER JOIN AdventureWorks2017.Production.ProductSubcategory AS PS
-ON P.ProductSubcategoryID=PS.ProductSubcategoryID
-INNER JOIN AdventureWorks2017.Production.ProductCategory AS PC
-ON PS.ProductCategoryID=PC.ProductCategoryID
-SET IDENTITY_INSERT  Proizvodi OFF
+    INNER JOIN AdventureWorks2017.Production.ProductSubcategory AS PS ON P.ProductSubcategoryID = PS.ProductSubcategoryID
+    INNER JOIN AdventureWorks2017.Production.ProductCategory AS PC ON PS.ProductCategoryID = PC.ProductCategoryID
+
+SET IDENTITY_INSERT Proizvodi OFF
 GO
 
---b)	U tabelu ZaglavljeNarudzbe dodati sve narudžbe
---•	SalesOrderID -> NarudzbaID
---•	OrderDate -> DatumNarudzbe
---•	ShipDate -> DatumIsporuke
---•	FirstName (Person) -> ImeKupca
---•	LastName (Person) -> PrezimeKupca
---•	Name (SalesTerritory) -> NazivTeritorije
---•	Group (SalesTerritory) -> NazivRegije
---•	Name (ShipMethod) -> NacinIsporuke
+--b)	U tabelu ZaglavljeNarudzbe dodati sve narudï¿½be
+--ï¿½	SalesOrderID -> NarudzbaID
+--ï¿½	OrderDate -> DatumNarudzbe
+--ï¿½	ShipDate -> DatumIsporuke
+--ï¿½	FirstName (Person) -> ImeKupca
+--ï¿½	LastName (Person) -> PrezimeKupca
+--ï¿½	Name (SalesTerritory) -> NazivTeritorije
+--ï¿½	Group (SalesTerritory) -> NazivRegije
+--ï¿½	Name (ShipMethod) -> NacinIsporuke
 SET IDENTITY_INSERT ZaglavljeNarudzbe ON
-INSERT INTO ZaglavljeNarudzbe(NarudzbaID,DatumNarudzbe,DatumIsporuke,ImeKupca,PrezimeKupca,NazivTeritorije,NazivRegije,NacinIsporuke)
-SELECT SOH.SalesOrderID,SOH.OrderDate,SOH.ShipDate,PP.FirstName,PP.LastName,ST.Name,ST.[Group],SM.Name
-FROM AdventureWorks2017.Sales.SalesOrderHeader AS SOH
-INNER JOIN AdventureWorks2017.Sales.Customer AS SC
-ON SOH.CustomerID=SC.CustomerID
-INNER JOIN AdventureWorks2017.Person.Person AS PP
-ON SC.PersonID=PP.BusinessEntityID
-INNER JOIN AdventureWorks2017.Sales.SalesTerritory AS ST
-ON ST.TerritoryID=SOH.TerritoryID
-INNER JOIN AdventureWorks2017.Purchasing.ShipMethod AS SM
-ON SOH.ShipMethodID=SM.ShipMethodID
+
+INSERT INTO ZaglavljeNarudzbe(NarudzbaID, DatumNarudzbe, DatumIsporuke, ImeKupca, PrezimeKupca, NazivTeritorije, NazivRegije, NacinIsporuke)
+SELECT 
+    SOH.SalesOrderID,
+    SOH.OrderDate,
+    SOH.ShipDate,
+    PP.FirstName,
+    PP.LastName,
+    ST.Name,
+    ST.[Group],
+    SM.Name
+FROM AdventureWorks2017.Sales.SalesOrderHeader AS SOH 
+    INNER JOIN AdventureWorks2017.Sales.Customer AS SC ON SOH.CustomerID = SC.CustomerID
+    INNER JOIN AdventureWorks2017.Person.Person AS PP ON SC.PersonID = PP.BusinessEntityID
+    INNER JOIN AdventureWorks2017.Sales.SalesTerritory AS ST ON ST.TerritoryID = SOH.TerritoryID
+    INNER JOIN AdventureWorks2017.Purchasing.ShipMethod AS SM ON SOH.ShipMethodID = SM.ShipMethodID
+
 SET IDENTITY_INSERT ZaglavljeNarudzbe OFF
 GO
---c)	U tabelu DetaljiNarudzbe dodati sve stavke narudžbe
---•	SalesOrderID -> NarudzbaID
---•	ProductID -> ProizvodID
---•	UnitPrice -> Cijena
---•	OrderQty -> Kolicina
---•	UnitPriceDiscount -> Popust
+--c)	U tabelu DetaljiNarudzbe dodati sve stavke narudï¿½be
+--ï¿½	SalesOrderID -> NarudzbaID
+--ï¿½	ProductID -> ProizvodID
+--ï¿½	UnitPrice -> Cijena
+--ï¿½	OrderQty -> Kolicina
+--ï¿½	UnitPriceDiscount -> Popust
 --8 bodova
 INSERT INTO DetaljiNarudzbe
-SELECT SOD.SalesOrderID,SOD.ProductID,SOD.UnitPrice,SOD.OrderQty,SOD.UnitPriceDiscount
+SELECT SOD.SalesOrderID, SOD.ProductID, SOD.UnitPrice, SOD.OrderQty, SOD.UnitPriceDiscount
 FROM AdventureWorks2017.Sales.SalesOrderDetail AS SOD
 GO
 --4.	
---a)	(6 bodova) Kreirati upit koji æe prikazati ukupan broj uposlenika po odjelima. Potrebno je prebrojati samo one uposlenike koji su trenutno aktivni, odnosno rade na datom odjelu. Takoðer, samo uzeti u obzir one uposlenike koji imaju više od 10 godina radnog staža (ne ukljuèujuæi graniènu vrijednost). Rezultate sortirati preba broju uposlenika u opadajuæem redoslijedu. (AdventureWorks2017)
+--a)	(6 bodova) Kreirati upit koji ï¿½e prikazati ukupan broj uposlenika po odjelima. Potrebno je prebrojati samo one uposlenike koji su trenutno aktivni, odnosno rade na datom odjelu. Takoï¿½er, samo uzeti u obzir one uposlenike koji imaju viï¿½e od 10 godina radnog staï¿½a (ne ukljuï¿½ujuï¿½i graniï¿½nu vrijednost). Rezultate sortirati preba broju uposlenika u opadajuï¿½em redoslijedu. (AdventureWorks2017)
 USE AdventureWorks2017
-SELECT D.Name,COUNT(*) 'Broj uposlenika'
+SELECT 
+    D.Name, 
+    COUNT(*) 'Broj uposlenika'
 FROM HumanResources.Employee AS E
-INNER JOIN HumanResources.EmployeeDepartmentHistory AS EDH
-ON E.BusinessEntityID=EDH.BusinessEntityID
-INNER JOIN HumanResources.Department AS D
-ON EDH.DepartmentID=D.DepartmentID
-WHERE EDH.EndDate IS NULL AND DATEDIFF(YEAR,E.HireDate,GETDATE())>10
+    INNER JOIN HumanResources.EmployeeDepartmentHistory AS EDH ON E.BusinessEntityID = EDH.BusinessEntityID
+    INNER JOIN HumanResources.Department AS D ON EDH.DepartmentID = D.DepartmentID
+WHERE EDH.EndDate IS NULL AND DATEDIFF(YEAR, E.HireDate, GETDATE()) > 10
 GROUP BY D.Name
-ORDER BY 2 DESC
+ORDER BY 'Broj uposlenika' DESC
 GO
 --, SUM(IIF(POD.RejectedQty>100,1,0)) 'Broj stavki'
---b)	Kreirati upit koji prikazuje po mjesecima ukupnu vrijednost poruèene robe za skladište, te ukupnu kolièinu primljene robe, iskljuèivo u 2012 godini. Uslov je da su troškovi prevoza bili izmeðu 500 i 2500, a da je dostava izvršena CARGO transportom. Takoðer u rezultatima upita je potrebno prebrojati stavke narudžbe na kojima je odbijena kolièina veæa od 100.(AdventureWorks2017)
+--b)	Kreirati upit koji prikazuje po mjesecima ukupnu vrijednost poruï¿½ene robe za skladiï¿½te, te ukupnu koliï¿½inu primljene robe, iskljuï¿½ivo u 2012 godini. Uslov je da su troï¿½kovi prevoza bili izmeï¿½u 500 i 2500, a da je dostava izvrï¿½ena CARGO transportom. Takoï¿½er u rezultatima upita je potrebno prebrojati stavke narudï¿½be na kojima je odbijena koliï¿½ina veï¿½a od 100.(AdventureWorks2017)
+
 USE AdventureWorks2017
---1. NAÈIN
-  SELECT MONTH(POH.OrderDate) 'Mjesec', SUM(POD.LineTotal), SUM(POD.ReceivedQty),SUM(IIF(POD.RejectedQty>100,1,0)) 'Broj stavki'
-  FROM Purchasing.PurchaseOrderHeader AS POH
-  INNER JOIN Purchasing.PurchaseOrderDetail AS POD
-  ON POH.PurchaseOrderID=POD.PurchaseOrderID
-  INNER JOIN Purchasing.ShipMethod AS SM
-  ON POH.ShipMethodID=SM.ShipMethodID
-  WHERE YEAR(POH.OrderDate)=2012 AND POH.Freight BETWEEN 500 AND 2500 AND SM.Name LIKE '%CARGO%'
-  GROUP BY MONTH(POH.OrderDate)  
+--1. NAï¿½IN
+SELECT 
+    MONTH(POH.OrderDate) 'Mjesec', 
+    SUM(POD.LineTotal), 
+    SUM(POD.ReceivedQty),
+    SUM(IIF(POD.RejectedQty > 100, 1, 0)) 'Broj stavki'
+FROM Purchasing.PurchaseOrderHeader AS POH
+    INNER JOIN Purchasing.PurchaseOrderDetail AS POD ON POH.PurchaseOrderID = POD.PurchaseOrderID
+    INNER JOIN Purchasing.ShipMethod AS SM ON POH.ShipMethodID = SM.ShipMethodID
+WHERE YEAR(POH.OrderDate)=2012 
+    AND POH.Freight BETWEEN 500 AND 2500 
+    AND SM.Name LIKE '%CARGO%'
+GROUP BY MONTH(POH.OrderDate)  
 GO  
---2. NAÈIN  
-  SELECT MONTH(POH.OrderDate) 'Mjesec', SUM(POD.LineTotal), SUM(POD.ReceivedQty),(SELECT COUNT(*)
-																					FROM Purchasing.PurchaseOrderHeader AS POH1
-																					INNER JOIN Purchasing.PurchaseOrderDetail AS POD1
-																					ON POH1.PurchaseOrderID=POD1.PurchaseOrderID
-																					INNER JOIN Purchasing.ShipMethod AS SM1
-																					ON POH1.ShipMethodID=SM1.ShipMethodID
-																					WHERE MONTH(POH.OrderDate)=MONTH(POH1.OrderDate) AND                                                     POD1.RejectedQty>100 AND YEAR(POH1.OrderDate)=2012 AND													POH1.Freight BETWEEN 500 AND 2500 AND SM1.Name LIKE '%CARGO%')
-  FROM Purchasing.PurchaseOrderHeader AS POH
-  INNER JOIN Purchasing.PurchaseOrderDetail AS POD
-  ON POH.PurchaseOrderID=POD.PurchaseOrderID
-  INNER JOIN Purchasing.ShipMethod AS SM
-  ON POH.ShipMethodID=SM.ShipMethodID
-  WHERE YEAR(POH.OrderDate)=2012 AND POH.Freight BETWEEN 500 AND 2500 AND SM.Name LIKE '%CARGO%'
-  GROUP BY MONTH(POH.OrderDate)
+--2. NAï¿½IN  
+SELECT 
+  MONTH(POH.OrderDate) 'Mjesec', 
+  SUM(POD.LineTotal), 
+  SUM(POD.ReceivedQty),
+  (SELECT COUNT(*)
+      FROM Purchasing.PurchaseOrderHeader AS POH1
+  		INNER JOIN Purchasing.PurchaseOrderDetail AS POD1 ON POH1.PurchaseOrderID = POD1.PurchaseOrderID
+        INNER JOIN Purchasing.ShipMethod AS SM1 ON POH1.ShipMethodID = SM1.ShipMethodID
+      WHERE MONTH(POH.OrderDate) = MONTH(POH1.OrderDate) 
+          AND POD1.RejectedQty > 100 
+          AND YEAR(POH1.OrderDate) = 2012 
+          AND POH1.Freight BETWEEN 500 AND 2500 
+          AND SM1.Name LIKE '%CARGO%')
+FROM Purchasing.PurchaseOrderHeader AS POH
+  INNER JOIN Purchasing.PurchaseOrderDetail AS POD ON POH.PurchaseOrderID = POD.PurchaseOrderID
+  INNER JOIN Purchasing.ShipMethod AS SM ON POH.ShipMethodID = SM.ShipMethodID
+WHERE YEAR(POH.OrderDate)=2012 
+  AND POH.Freight BETWEEN 500 AND 2500 
+  AND SM.Name LIKE '%CARGO%'
+GROUP BY MONTH(POH.OrderDate)
 
 GO
 
---3. NAÈIN
- SELECT Q.Mjesec, SUM(Q.[Ukupna vrijednost]) 'Ukupna vrijednost', SUM(Q.[Ukupna kolièina])  'Ukupna kolièina',SUM(Q.[Stavke narudzbe]) 'Stavke narudzbe'
-FROM
-(SELECT MONTH(POH.OrderDate) 'Mjesec', SUM(POD.LineTotal) 'Ukupna vrijednost', SUM(POD.ReceivedQty) 'Ukupna kolièina', (SELECT COUNT(*)
-																														FROM
-																														AdventureWorks2017.Purchasing.PurchaseOrderDetail AS POD1
-																														 WHERE POD1.RejectedQty>100 AND POD.PurchaseOrderID=POD1.PurchaseOrderID) 'Stavke narudzbe'
-
+--3. NAï¿½IN
+SELECT 
+    Q.Mjesec, 
+    SUM(Q.[Ukupna vrijednost]) 'Ukupna vrijednost', 
+    SUM(Q.[Ukupna koliï¿½ina]) 'Ukupna koliï¿½ina',
+    SUM(Q.[Stavke narudzbe]) 'Stavke narudzbe'
+FROM (SELECT 
+    MONTH(POH.OrderDate) 'Mjesec', 
+    SUM(POD.LineTotal) 'Ukupna vrijednost', 
+    SUM(POD.ReceivedQty) 'Ukupna koliï¿½ina', 
+    (SELECT COUNT(*)
+	    FROM AdventureWorks2017.Purchasing.PurchaseOrderDetail AS POD1
+		WHERE POD1.RejectedQty > 100 AND POD.PurchaseOrderID = POD1.PurchaseOrderID) 'Stavke narudzbe'
 FROM Purchasing.PurchaseOrderDetail AS POD
-INNER JOIN Purchasing.PurchaseOrderHeader AS POH
-ON POD.PurchaseOrderID=POH.PurchaseOrderID
-INNER JOIN Purchasing.ShipMethod AS SM
-ON POH.ShipMethodID=SM.ShipMethodID
-WHERE YEAR(POH.OrderDate)=2012 AND (POH.Freight BETWEEN 500 AND 2500) AND SM.Name LIKE '%CARGO%'
+    INNER JOIN Purchasing.PurchaseOrderHeader AS POH ON POD.PurchaseOrderID = POH.PurchaseOrderID
+    INNER JOIN Purchasing.ShipMethod AS SM ON POH.ShipMethodID = SM.ShipMethodID
+WHERE YEAR(POH.OrderDate) = 2012 
+    AND (POH.Freight BETWEEN 500 AND 2500) 
+    AND SM.Name LIKE '%CARGO%'
 GROUP BY MONTH(POH.OrderDate), POD.PurchaseOrderID) AS Q
 GROUP BY Q.Mjesec
 
 GO
  --PROVJERA
- SELECT POH.OrderDate, POD.RejectedQty, POD.PurchaseOrderDetailID, POH.PurchaseOrderID
- FROM Purchasing.PurchaseOrderHeader AS POH
- INNER JOIN Purchasing.PurchaseOrderDetail AS POD
- ON POH.PurchaseOrderID=POD.PurchaseOrderID
- INNER JOIN Purchasing.ShipMethod AS SM
- ON POH.ShipMethodID=SM.ShipMethodID
- WHERE YEAR(POH.OrderDate)=2012 AND POH.Freight BETWEEN 500 AND 2500 AND SM.Name LIKE '%CARGO%' AND MONTH(POH.OrderDate) =1
+ SELECT 
+    POH.OrderDate, 
+    POD.RejectedQty, 
+    POD.PurchaseOrderDetailID, 
+    POH.PurchaseOrderID
+ FROM Purchasing.PurchaseOrderHeader AS POH 
+    INNER JOIN Purchasing.PurchaseOrderDetail AS POD ON POH.PurchaseOrderID = POD.PurchaseOrderID
+    INNER JOIN Purchasing.ShipMethod AS SM ON POH.ShipMethodID = SM.ShipMethodID
+ WHERE YEAR(POH.OrderDate)=2012 
+    AND POH.Freight BETWEEN 500 AND 2500 
+    AND SM.Name LIKE '%CARGO%' 
+    AND MONTH(POH.OrderDate) = 1
   --GROUP BY MONTH(POH.OrderDate), POD.RejectedQty
 GO  
---c)	(11 bodova) Prikazati ukupan broj narudžbi koje su obradili uposlenici, za svakog uposlenika pojedinaèno. Uslov je da su narudžbe kreirane u 2011 ili 2012 godini, te da je u okviru jedne narudžbe odobren popust na dvije ili više stavki. Takoðer uzeti u obzir samo one narudžbe koje su isporuèene u Veliku Britaniju, Kanadu ili Francusku. (AdventureWorks2017)
+--c)	(11 bodova) Prikazati ukupan broj narudï¿½bi koje su obradili uposlenici, za svakog uposlenika pojedinaï¿½no. Uslov je da su narudï¿½be kreirane u 2011 ili 2012 godini, te da je u okviru jedne narudï¿½be odobren popust na dvije ili viï¿½e stavki. Takoï¿½er uzeti u obzir samo one narudï¿½be koje su isporuï¿½ene u Veliku Britaniju, Kanadu ili Francusku. (AdventureWorks2017)
 
-SELECT PP.LastName,PP.FirstName, COUNT(*) 'Broj narudžbi'
+SELECT 
+    PP.LastName,
+    PP.FirstName, 
+    COUNT(*) BrojNarudzbi
 FROM Person.Person AS PP
-INNER JOIN HumanResources.Employee AS E
-ON PP.BusinessEntityID=E.BusinessEntityID
-INNER JOIN Sales.SalesPerson AS SP
-ON SP.BusinessEntityID=E.BusinessEntityID
-INNER JOIN Sales.SalesOrderHeader AS SOH
-ON SOH.SalesPersonID=SP.BusinessEntityID
-INNER JOIN Sales.SalesTerritory AS ST
-ON ST.TerritoryID=SOH.TerritoryID
-WHERE YEAR(SOH.OrderDate) IN (2011,2012) AND ST.Name IN ('United Kingdom', 'Canada', 'France') AND (SELECT COUNT(*)
-																									FROM Sales.SalesOrderDetail AS SOD
-																									WHERE SOD.SalesOrderID=SOH.SalesOrderID AND 
-																									SOD.UnitPriceDiscount>0) >=2
-GROUP BY PP.LastName,PP.FirstName
-ORDER BY 3 DESC
+    INNER JOIN HumanResources.Employee AS E ON PP.BusinessEntityID = E.BusinessEntityID
+    INNER JOIN Sales.SalesPerson AS SP ON SP.BusinessEntityID = E.BusinessEntityID
+    INNER JOIN Sales.SalesOrderHeader AS SOH ON SOH.SalesPersonID = SP.BusinessEntityID
+    INNER JOIN Sales.SalesTerritory AS ST ON ST.TerritoryID = SOH.TerritoryID
+WHERE YEAR(SOH.OrderDate) IN (2011,2012) 
+    AND ST.Name IN ('United Kingdom', 'Canada', 'France') 
+    AND (SELECT COUNT(*)
+	    FROM Sales.SalesOrderDetail AS SOD
+        WHERE SOD.SalesOrderID = SOH.SalesOrderID AND SOD.UnitPriceDiscount>0) >=2
+GROUP BY PP.LastName, PP.FirstName
+ORDER BY BrojNarudzbi DESC
 
 GO
 
 
 
 
---d)	(11 bodova) Napisati upit koji æe prikazati sljedeæe podatke o proizvodima: naziv proizvoda, naziv kompanije dobavljaèa, kolièinu na skladištu, te kreiranu šifru proizvoda. Šifra se sastoji od sljedeæih vrijednosti: (Northwind)
+--d)	(11 bodova) Napisati upit koji ï¿½e prikazati sljedeï¿½e podatke o proizvodima: naziv proizvoda, naziv kompanije dobavljaï¿½a, koliï¿½inu na skladiï¿½tu, te kreiranu ï¿½ifru proizvoda. ï¿½ifra se sastoji od sljedeï¿½ih vrijednosti: (Northwind)
 --1)	Prva dva slova naziva proizvoda
 --2)	Karakter /
---3)	Prva dva slova druge rijeèi naziva kompanije dobavljaèa, uzeti u obzir one kompanije koje u nazivu imaju 2 ili 3 rijeèi
---4)	ID proizvoda po pravilu ukoliko se radi o jednocifrenom broju na njega dodati slovo 'a', u ostalim sluèajevima dodati obrnutu vrijednost broja
---Npr. Za proizvod sa nazivom Chai i sa dobavljaèem naziva Exotic Liquids, šifra æe btiti Ch/Li1a.
+--3)	Prva dva slova druge rijeï¿½i naziva kompanije dobavljaï¿½a, uzeti u obzir one kompanije koje u nazivu imaju 2 ili 3 rijeï¿½i
+--4)	ID proizvoda po pravilu ukoliko se radi o jednocifrenom broju na njega dodati slovo 'a', u ostalim sluï¿½ajevima dodati obrnutu vrijednost broja
+--Npr. Za proizvod sa nazivom Chai i sa dobavljaï¿½em naziva Exotic Liquids, ï¿½ifra ï¿½e btiti Ch/Li1a.
 
 USE Northwind 
 GO
-SELECT P.ProductName,S.CompanyName,P.UnitsInStock,LEFT(P.ProductName,2)+'/'+LEFT(SUBSTRING(S.CompanyName,CHARINDEX(' ',S.CompanyName)+1,LEN(S.CompanyName)),2)+IIF(P.ProductID BETWEEN 1 AND 9,'a', REVERSE(P.ProductID)), P.ProductID
+SELECT 
+    P.ProductName,
+    S.CompanyName,
+    P.UnitsInStock,
+    CONCAT(
+        LEFT(P.ProductName, 2), 
+        '/',
+        LEFT(SUBSTRING(S.CompanyName, CHARINDEX(' ', S.CompanyName) + 1, LEN(S.CompanyName)), 2),
+        IIF(P.ProductID BETWEEN 1 AND 9, 'a', REVERSE(P.ProductID))
+    ),
+    -- Moze i sa +, meni bolje izgleda kad je grupisano pod CONCAT
+    -- LEFT(P.ProductName, 2) 
+    --     + '/' 
+    --     + LEFT(SUBSTRING(S.CompanyName, CHARINDEX(' ', S.CompanyName) + 1, LEN(S.CompanyName)), 2) 
+    --     + IIF(P.ProductID BETWEEN 1 AND 9, 'a', REVERSE(P.ProductID)), 
+    P.ProductID
 FROM Products AS P
-INNER JOIN Suppliers AS S
-ON P.SupplierID=S.SupplierID
-WHERE LEN(S.CompanyName)-LEN(REPLACE(S.CompanyName,' ','')) IN (1,2)
+INNER JOIN Suppliers AS S ON P.SupplierID = S.SupplierID
+WHERE LEN(S.CompanyName) - LEN(REPLACE(S.CompanyName, ' ', '')) IN (1, 2)
 
 GO
 --		37 bodova
 --5.	
---a)	(3 boda) U kreiranoj bazi kreirati index kojim æe se ubrzati pretraga prema šifri i nazivu proizvoda. Napisati upit za potpuno iskorištenje indexa.
+--a)	(3 boda) U kreiranoj bazi kreirati index kojim ï¿½e se ubrzati pretraga prema ï¿½ifri i nazivu proizvoda. Napisati upit za potpuno iskoriï¿½tenje indexa.
 USE brojIndexa
 GO
 
 CREATE INDEX IX_Search_Products
-ON Proizvodi(SifraProizvoda,Naziv)
+ON Proizvodi(SifraProizvoda, Naziv)
 
-SELECT P.SifraProizvoda,P.Naziv
+SELECT P.SifraProizvoda, P.Naziv
 FROM Proizvodi AS P
 WHERE P.SifraProizvoda LIKE 'F%' AND P.Naziv LIKE 'H%'
---b)	(7 bodova) U kreiranoj bazi kreirati proceduru sp_search_products kojom æe se vratiti podaci o proizvodima na osnovu kategorije kojoj pripadaju ili težini. Korisnici ne moraju unijeti niti jedan od parametara ali u tom sluèaju procedura ne vraæa niti jedan od zapisa. Korisnicima unosom veæ prvog slova kategorije se trebaju osvježiti zapisi, a vrijednost unesenog parametra težina æe vratiti one proizvode èija težina je veæa od  unesene vrijednosti.
+--b)	(7 bodova) U kreiranoj bazi kreirati proceduru sp_search_products kojom ï¿½e se vratiti podaci o proizvodima na osnovu kategorije kojoj pripadaju ili teï¿½ini. Korisnici ne moraju unijeti niti jedan od parametara ali u tom sluï¿½aju procedura ne vraï¿½a niti jedan od zapisa. Korisnicima unosom veï¿½ prvog slova kategorije se trebaju osvjeï¿½iti zapisi, a vrijednost unesenog parametra teï¿½ina ï¿½e vratiti one proizvode ï¿½ija teï¿½ina je veï¿½a od  unesene vrijednosti.
 GO
 CREATE PROCEDURE sp_search_products
 (
-@Kategorija NVARCHAR(50)=NULL,
-@Tezina DECIMAL(18,2)=NULL
+    @Kategorija NVARCHAR(50)=NULL,
+    @Tezina DECIMAL(18,2)=NULL
 )
 AS
 BEGIN
-	SELECT*
+	SELECT *
 	FROM Proizvodi AS P
-	WHERE P.NazivKategorije LIKE @Kategorija+'%' OR P.Tezina>@Tezina
+	WHERE P.NazivKategorije LIKE @Kategorija + '%' OR P.Tezina > @Tezina
 END
 GO
 
 
 EXEC sp_search_products 'Clothing'
-EXEC sp_search_products @Tezina=2.2
-EXEC sp_search_products
---c)	(18 bodova) Zbog proglašenja dobitnika nagradne igre održane u prva dva mjeseca drugog kvartala 2013 godine potrebno je kreirati upit. Upitom æe se prikazati treæa najveæa narudžba (vrijednost bez popusta) za svaki mjesec pojedinaèno. Obzirom da je u pravilima nagradne igre potrebno nagraditi 2 osobe (muškarca i ženu) za svaki mjesec, potrebno je u rezultatima upita prikazati pored navedenih stavki i o kojem se kupcu radi odnosno ime i prezime, te koju je nagradu osvojio. Nagrade se dodjeljuju po sljedeæem pravilu:
---•	za žene u prvom mjesecu drugog kvartala je stoni mikser, dok je za muškarce usisivaè
---•	za žene u drugom mjesecu drugog kvartala je pegla, dok je za muškarc multicooker
--- Obzirom da za kupce nije eksplicitno naveden spol, odreðivat æe se po pravilu: Ako je zadnje slovo imena a, smatra se da je osoba ženskog spola u suprotnom radi se o osobi muškog spola. Rezultate u formiranoj tabeli dobitnika sortirati prema vrijednosti narudžbe u opadajuæem redoslijedu. (AdventureWorks2017)
+EXEC sp_search_products @Tezina = 2.2
+
+--c)	(18 bodova) Zbog proglaï¿½enja dobitnika nagradne igre odrï¿½ane u prva dva mjeseca drugog kvartala 2013 godine potrebno je kreirati upit. Upitom ï¿½e se prikazati treï¿½a najveï¿½a narudï¿½ba (vrijednost bez popusta) za svaki mjesec pojedinaï¿½no. Obzirom da je u pravilima nagradne igre potrebno nagraditi 2 osobe (muï¿½karca i ï¿½enu) za svaki mjesec, potrebno je u rezultatima upita prikazati pored navedenih stavki i o kojem se kupcu radi odnosno ime i prezime, te koju je nagradu osvojio. Nagrade se dodjeljuju po sljedeï¿½em pravilu:
+--ï¿½	za ï¿½ene u prvom mjesecu drugog kvartala je stoni mikser, dok je za muï¿½karce usisivaï¿½
+--ï¿½	za ï¿½ene u drugom mjesecu drugog kvartala je pegla, dok je za muï¿½karc multicooker
+-- Obzirom da za kupce nije eksplicitno naveden spol, odreï¿½ivat ï¿½e se po pravilu: Ako je zadnje slovo imena a, smatra se da je osoba ï¿½enskog spola u suprotnom radi se o osobi muï¿½kog spola. Rezultate u formiranoj tabeli dobitnika sortirati prema vrijednosti narudï¿½be u opadajuï¿½em redoslijedu. (AdventureWorks2017)
 --28 bodova
---6.	Dokument teorija_28_06_2022, preimenovati vašim brojem indeksa, te u tom dokumentu izraditi pitanja.
+--6.	Dokument teorija_28_06_2022, preimenovati vaï¿½im brojem indeksa, te u tom dokumentu izraditi pitanja.
 --20 bodova
---SQL skriptu (bila prazna ili ne) imenovati Vašim brojem indeksa npr IB200001.sql, te istu zajedno sa .docx dokumentom kompromitovati  u jednu datoteku naziva npr IB200001.zip i upload-ovati na ftp u folder Upload.
+--SQL skriptu (bila prazna ili ne) imenovati Vaï¿½im brojem indeksa npr IB200001.sql, te istu zajedno sa .docx dokumentom kompromitovati  u jednu datoteku naziva npr IB200001.zip i upload-ovati na ftp u folder Upload.
 --Maksimalan broj bodova:100  
 --Prag prolaznosti: 55
 GO
-	USE AdventureWorks2017
-	SELECT*
-	FROM(SELECT TOP 1 T1.SalesOrderID,T1.FirstName,T1.LastName,T1.[Ukupna vrijednost], T1.Nagrada
-	FROM (SELECT TOP 3 SOH.SalesOrderID,PP.FirstName,PP.LastName ,SUM(SOD.UnitPrice*SOD.OrderQty) 'Ukupna vrijednost','Stoni mikser' Nagrada
-	FROM Sales.SalesOrderHeader AS SOH
-	INNER JOIN Sales.SalesOrderDetail AS SOD
-	ON SOH.SalesOrderID=SOD.SalesOrderID
-	INNER JOIN Sales.Customer AS SC
-	ON SOH.CustomerID=SC.CustomerID
-	INNER JOIN Person.Person AS PP
-	ON SC.PersonID=PP.BusinessEntityID
-	WHERE YEAR(SOH.OrderDate)=2013 AND MONTH(SOH.OrderDate)=4 AND RIGHT(PP.FirstName,1)='a'
-	GROUP BY SOH.SalesOrderID,PP.FirstName,PP.LastName
-	ORDER BY 4 DESC) AS T1
-	ORDER BY 4 ASC) AS T2
-	UNION
-	SELECT*
-	FROM(SELECT TOP 1 T1.SalesOrderID,T1.FirstName,T1.LastName,T1.[Ukupna vrijednost], T1.Nagrada
-	FROM (SELECT TOP 3 SOH.SalesOrderID,PP.FirstName,PP.LastName ,SUM(SOD.UnitPrice*SOD.OrderQty) 'Ukupna vrijednost','Usisivaè' Nagrada
-	FROM Sales.SalesOrderHeader AS SOH
-	INNER JOIN Sales.SalesOrderDetail AS SOD
-	ON SOH.SalesOrderID=SOD.SalesOrderID
-	INNER JOIN Sales.Customer AS SC
-	ON SOH.CustomerID=SC.CustomerID
-	INNER JOIN Person.Person AS PP
-	ON SC.PersonID=PP.BusinessEntityID
-	WHERE YEAR(SOH.OrderDate)=2013 AND MONTH(SOH.OrderDate)=4 AND RIGHT(PP.FirstName,1)<>'a'
-	GROUP BY SOH.SalesOrderID,PP.FirstName,PP.LastName
-	ORDER BY 4 DESC) AS T1
-	ORDER BY 4 ASC) AS T2
-	UNION
-		SELECT*
-	FROM(SELECT TOP 1 T1.SalesOrderID,T1.FirstName,T1.LastName,T1.[Ukupna vrijednost], T1.Nagrada
-	FROM (SELECT TOP 3 SOH.SalesOrderID,PP.FirstName,PP.LastName ,SUM(SOD.UnitPrice*SOD.OrderQty) 'Ukupna vrijednost','Pegla' Nagrada
-	FROM Sales.SalesOrderHeader AS SOH
-	INNER JOIN Sales.SalesOrderDetail AS SOD
-	ON SOH.SalesOrderID=SOD.SalesOrderID
-	INNER JOIN Sales.Customer AS SC
-	ON SOH.CustomerID=SC.CustomerID
-	INNER JOIN Person.Person AS PP
-	ON SC.PersonID=PP.BusinessEntityID
-	WHERE YEAR(SOH.OrderDate)=2013 AND MONTH(SOH.OrderDate)=5 AND RIGHT(PP.FirstName,1)='a'
-	GROUP BY SOH.SalesOrderID,PP.FirstName,PP.LastName
-	ORDER BY 4 DESC) AS T1
-	ORDER BY 4 ASC) AS T2
-	UNION
-	SELECT*
-	FROM(SELECT TOP 1 T1.SalesOrderID,T1.FirstName,T1.LastName,T1.[Ukupna vrijednost], T1.Nagrada
-	FROM (SELECT TOP 3 SOH.SalesOrderID,PP.FirstName,PP.LastName ,SUM(SOD.UnitPrice*SOD.OrderQty) 'Ukupna vrijednost','Multicooker' Nagrada
-	FROM Sales.SalesOrderHeader AS SOH
-	INNER JOIN Sales.SalesOrderDetail AS SOD
-	ON SOH.SalesOrderID=SOD.SalesOrderID
-	INNER JOIN Sales.Customer AS SC
-	ON SOH.CustomerID=SC.CustomerID
-	INNER JOIN Person.Person AS PP
-	ON SC.PersonID=PP.BusinessEntityID
-	WHERE YEAR(SOH.OrderDate)=2013 AND MONTH(SOH.OrderDate)=5 AND RIGHT(PP.FirstName,1)<>'a'
-	GROUP BY SOH.SalesOrderID,PP.FirstName,PP.LastName
-	ORDER BY 4 DESC) AS T1
-	ORDER BY 4 ASC) AS T2
-	ORDER BY [Ukupna vrijednost] DESC
+USE AdventureWorks2017
+
+SELECT *
+FROM 
+    (SELECT TOP 1 
+        T1.SalesOrderID, 
+        T1.FirstName, 
+        T1.LastName, 
+        T1.[Ukupna vrijednost], 
+        T1.Nagrada
+    FROM 
+        (SELECT TOP 3 
+            SOH.SalesOrderID, 
+            PP.FirstName, 
+            PP.LastName,
+            SUM(SOD.UnitPrice * SOD.OrderQty) 'Ukupna vrijednost', 
+            'Stoni mikser' Nagrada
+            FROM Sales.SalesOrderHeader AS SOH
+                INNER JOIN Sales.SalesOrderDetail AS SOD ON SOH.SalesOrderID = SOD.SalesOrderID
+                INNER JOIN Sales.Customer AS SC ON SOH.CustomerID = SC.CustomerID
+                INNER JOIN Person.Person AS PP ON SC.PersonID = PP.BusinessEntityID
+            WHERE YEAR(SOH.OrderDate) = 2013 AND MONTH(SOH.OrderDate) = 4 AND RIGHT(PP.FirstName, 1) = 'a'
+            GROUP BY SOH.SalesOrderID, PP.FirstName, PP.LastName
+            ORDER BY 'Ukupna vrijednost' DESC) AS T1
+        ORDER BY 'Ukupna vrijednost' ASC) AS T2
+UNION
+SELECT *
+FROM 
+    (SELECT TOP 1 
+        T1.SalesOrderID, 
+        T1.FirstName, 
+        T1.LastName, 
+        T1.[Ukupna vrijednost], 
+        T1.Nagrada
+    FROM 
+        (SELECT TOP 3 
+            SOH.SalesOrderID, 
+            PP.FirstName, 
+            PP.LastName,
+            SUM(SOD.UnitPrice * SOD.OrderQty) 'Ukupna vrijednost', 
+            'Usisivaï¿½' Nagrada
+            FROM Sales.SalesOrderHeader AS SOH
+                INNER JOIN Sales.SalesOrderDetail AS SOD ON SOH.SalesOrderID = SOD.SalesOrderID
+                INNER JOIN Sales.Customer AS SC ON SOH.CustomerID = SC.CustomerID
+                INNER JOIN Person.Person AS PP ON SC.PersonID = PP.BusinessEntityID
+            WHERE YEAR(SOH.OrderDate) = 2013 AND MONTH(SOH.OrderDate) = 4 AND RIGHT(PP.FirstName, 1) <> 'a'
+            GROUP BY SOH.SalesOrderID, PP.FirstName, PP.LastName
+            ORDER BY 'Ukupna vrijednost' DESC) AS T1
+        ORDER BY 'Ukupna vrijednost' ASC) AS T2
+UNION
+SELECT *
+FROM 
+    (SELECT TOP 1 
+        T1.SalesOrderID, 
+        T1.FirstName, 
+        T1.LastName, 
+        T1.[Ukupna vrijednost], 
+        T1.Nagrada
+    FROM 
+        (SELECT TOP 3 
+            SOH.SalesOrderID, 
+            PP.FirstName, 
+            PP.LastName,
+            SUM(SOD.UnitPrice * SOD.OrderQty) 'Ukupna vrijednost', 
+            'Pegla' Nagrada
+            FROM Sales.SalesOrderHeader AS SOH
+                INNER JOIN Sales.SalesOrderDetail AS SOD ON SOH.SalesOrderID = SOD.SalesOrderID
+                INNER JOIN Sales.Customer AS SC ON SOH.CustomerID = SC.CustomerID
+                INNER JOIN Person.Person AS PP ON SC.PersonID = PP.BusinessEntityID
+            WHERE YEAR(SOH.OrderDate) = 2013 AND MONTH(SOH.OrderDate) = 5 AND RIGHT(PP.FirstName, 1) = 'a'
+            GROUP BY SOH.SalesOrderID, PP.FirstName, PP.LastName
+            ORDER BY 'Ukupna vrijednost' DESC) AS T1
+        ORDER BY 'Ukupna vrijednost' ASC) AS T2
+UNION
+SELECT *
+FROM 
+    (SELECT TOP 1 
+        T1.SalesOrderID, 
+        T1.FirstName, 
+        T1.LastName, 
+        T1.[Ukupna vrijednost], 
+        T1.Nagrada
+    FROM 
+        (SELECT TOP 3 
+            SOH.SalesOrderID, 
+            PP.FirstName, 
+            PP.LastName,
+            SUM(SOD.UnitPrice * SOD.OrderQty) 'Ukupna vrijednost', 
+            'Multicooker' Nagrada
+            FROM Sales.SalesOrderHeader AS SOH
+                INNER JOIN Sales.SalesOrderDetail AS SOD ON SOH.SalesOrderID = SOD.SalesOrderID
+                INNER JOIN Sales.Customer AS SC ON SOH.CustomerID = SC.CustomerID
+                INNER JOIN Person.Person AS PP ON SC.PersonID = PP.BusinessEntityID
+            WHERE YEAR(SOH.OrderDate) = 2013 AND MONTH(SOH.OrderDate) = 5 AND RIGHT(PP.FirstName, 1) <> 'a'
+            GROUP BY SOH.SalesOrderID, PP.FirstName, PP.LastName
+            ORDER BY 'Ukupna vrijednost' DESC) AS T1
+        ORDER BY 'Ukupna vrijednost' ASC) AS T2
+
+
+-- Naredni kod nije Elda pisala
+-- Usrana alternativa 
+GO
+CREATE PROCEDURE Nagradna_Igra   
+    @NagradaM nvarchar(max),
+    @NagradaZ nvarchar(max),
+    @Spol varchar(1),
+    @Godina int,
+    @Mjesec int   
+AS   
+SELECT 
+    SOH.SalesOrderID, 
+    PP.FirstName, 
+    PP.LastName,
+    SUM(SOD.UnitPrice * SOD.OrderQty) 'Ukupna vrijednost', 
+    IIF(@Spol = 'M' AND RIGHT(PP.FirstName, 1) <> 'a', @NagradaM, @NagradaZ) Nagrada
+FROM Sales.SalesOrderHeader AS SOH
+    INNER JOIN Sales.SalesOrderDetail AS SOD ON SOH.SalesOrderID = SOD.SalesOrderID
+    INNER JOIN Sales.Customer AS SC ON SOH.CustomerID = SC.CustomerID
+    INNER JOIN Person.Person AS PP ON SC.PersonID = PP.BusinessEntityID
+WHERE YEAR(SOH.OrderDate) = @Godina 
+    AND MONTH(SOH.OrderDate) = @Mjesec
+    AND ((@Spol = 'M' AND RIGHT(PP.FirstName, 1) <> 'a') OR (@Spol = 'Z' AND RIGHT(PP.FirstName, 1) = 'a'))
+GROUP BY SOH.SalesOrderID, PP.FirstName, PP.LastName
+ORDER BY 'Ukupna vrijednost' DESC
+OFFSET 2 ROWS FETCH NEXT 1 ROWS ONLY
+GO  
+
+
+CREATE TABLE #Dobitnici
+(
+    SalesOrderID INT,
+    FirstName VARCHAR(MAX),
+    LastName VARCHAR(MAX),
+    UkupnaVrijednost MONEY,
+    Nagrada VARCHAR(MAX)
+)
+
+INSERT INTO #Dobitnici
+EXECUTE Nagradna_Igra @NagradaM = 'Multicooker', @NagradaZ = 'Pegla', @Godina = 2013, @Mjesec = 4, @Spol = 'M'
+
+INSERT INTO #Dobitnici
+EXECUTE Nagradna_Igra @NagradaM = 'Multicooker', @NagradaZ = 'Pegla', @Godina = 2013, @Mjesec = 4, @Spol = 'Z'
+
+INSERT INTO #Dobitnici
+EXECUTE Nagradna_Igra @NagradaM = 'Stoni mikser', @NagradaZ = 'Usisivaï¿½', @Godina = 2013, @Mjesec = 5, @Spol = 'M'
+
+INSERT INTO #Dobitnici
+EXECUTE Nagradna_Igra @NagradaM = 'Stoni mikser', @NagradaZ = 'Usisivaï¿½', @Godina = 2013, @Mjesec = 5, @Spol = 'Z'
+
+SELECT * FROM #Dobitnici
+
+DROP TABLE #Dobitnici
+
